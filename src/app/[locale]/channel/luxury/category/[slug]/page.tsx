@@ -38,7 +38,7 @@ export default function CategoryPage() {
         {/* Category pills */}
         <div className="flex flex-wrap items-center gap-2 mb-8">
           <Link
-            href="/category/all"
+            href="/channel/luxury/category/all"
             className={`px-4 py-1.5 rounded-full text-xs font-medium border transition-colors duration-150 ${
               slug === "all"
                 ? "bg-brand text-white border-brand"
@@ -50,7 +50,7 @@ export default function CategoryPage() {
           {categories.map((cat) => (
             <Link
               key={cat}
-              href={`/category/${cat}`}
+              href={`/channel/luxury/category/${cat}`}
               className={`px-4 py-1.5 rounded-full text-xs font-medium border capitalize transition-colors duration-150 ${
                 slug === cat
                   ? "bg-brand text-white border-brand"
@@ -65,7 +65,7 @@ export default function CategoryPage() {
         {/* 2-column waterfall grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           {categoryProducts.map((product) => (
-            <Link key={product.slug} href={`/product/${product.slug}`}>
+            <Link key={product.slug} href={`/channel/luxury/product/${product.slug}`}>
               <ProductCard
                 image={product.images[0]}
                 brand={product.brand}

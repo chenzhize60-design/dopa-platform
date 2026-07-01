@@ -54,7 +54,7 @@ export default function BrowseMoodPage() {
         <section className="px-4 sm:px-6 py-12 max-w-7xl mx-auto w-full">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {moodProducts.map((product) => (
-              <Link key={product.slug} href={`/product/${product.slug}`}>
+              <Link key={product.slug} href={`/channel/luxury/product/${product.slug}`}>
                 <ProductCard
                   image={product.images[0]}
                   brand={product.brand}
