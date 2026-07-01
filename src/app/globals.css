@@ -1,26 +1,136 @@
 @import "tailwindcss";
 
+/* ============================================
+   Dopamine Luxury — Design Tokens
+   Default: Dark Mode
+   ============================================ */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --- Warm Dark Base --- */
+  --color-base-0: #0D0D0F;
+  --color-base-50: #141416;
+  --color-base-100: #1A1A1D;
+  --color-base-200: #222227;
+  --color-base-300: #2C2C32;
+
+  /* --- Text --- */
+  --text-primary: #F5F5F5;
+  --text-secondary: #A1A1A6;
+  --text-muted: #6E6E73;
+
+  /* --- Brand Colors --- */
+  --brand: #FF3B5C;
+  --brand-hover: #FF7B7B;
+  --brand-active: #E8324F;
+  --brand-glow: rgba(255, 59, 92, 0.20);
+  --brand-subtle: rgba(255, 59, 92, 0.10);
+
+  --joy: #FFD60A;
+  --joy-glow: rgba(255, 214, 10, 0.18);
+  --joy-subtle: rgba(255, 214, 10, 0.10);
+
+  --heal: #00D4C8;
+  --heal-glow: rgba(0, 212, 200, 0.18);
+  --heal-subtle: rgba(0, 212, 200, 0.10);
+
+  --alert: #FF8C42;
+  --alert-glow: rgba(255, 140, 66, 0.18);
+
+  /* --- Layout --- */
+  --bg-primary: var(--color-base-0);
+  --bg-surface: var(--color-base-50);
+  --bg-elevated: var(--color-base-100);
+  --bg-overlay: rgba(0, 0, 0, 0.65);
+
+  --border-default: #2C2C32;
+  --border-subtle: #1A1A1D;
+
+  /* --- Shadows / Glows --- */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.10);
+  --shadow-glow-brand: 0 0 40px var(--brand-glow);
+  --shadow-glow-joy: 0 0 40px var(--joy-glow);
+  --shadow-glow-heal: 0 0 40px var(--heal-glow);
+
+  /* --- Radii --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* --- Fonts --- */
+  --font-display: "Satoshi", -apple-system, sans-serif;
+  --font-body: "Inter", "Noto Sans SC", -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* --- Duration --- */
+  --duration-instant: 100ms;
+  --duration-fast: 200ms;
+  --duration-normal: 350ms;
+  --duration-slow: 500ms;
+  --duration-dramatic: 800ms;
+
+  /* Charts - no purple (#8B5CF6 → Coral) */
+  --chart-1: #FF3B5C;
+  --chart-2: #FFD60A;
+  --chart-3: #00D4C8;
+  --chart-4: #FF8C42;
+  --chart-5: #FF3B5C;
+
+  --sidebar: #0D0D0F;
+  --sidebar-foreground: #F0F0F2;
 }
+
+/* ============================================
+   Tailwind Theme Mapping
+   ============================================ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-active: var(--brand-active);
+  --color-joy: var(--joy);
+  --color-heal: var(--heal);
+  --color-alert: var(--alert);
+
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-elevated: var(--bg-elevated);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-border-default: var(--border-default);
+  --color-border-subtle: var(--border-subtle);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-full: var(--radius-full);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ============================================
+   Global Styles
+   ============================================ */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Gradient text for brand / hero */
+.text-gradient-brand {
+  background: linear-gradient(135deg, #FF3B5C 0%, #FF7B7B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

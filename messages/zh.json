@@ -1,0 +1,326 @@
+{
+  "meta": {
+    "title": "多巴胺奢侈品 — 情绪驱动购物",
+    "description": "多巴胺驱动的奢侈品购物体验。按情绪购物，而非品类。"
+  },
+  "header": {
+    "nav": {
+      "shop": "逛一逛",
+      "sim": "模拟下单",
+      "cart": "购物车",
+      "orders": "订单",
+      "profile": "我的"
+    },
+    "cartCount": "{count} 件"
+  },
+  "home": {
+    "badge": "多巴胺聚合平台",
+    "title": "今天，你",
+    "titleHighlight": "感觉",
+    "titleEnd": "怎么样？",
+    "subtitle": "情绪即入口。选择一个频道，开始你的多巴胺之旅。",
+    "pickChannel": "选择频道",
+    "trending": "正在流行",
+    "viewAll": "查看全部"
+  },
+  "channels": {
+    "luxury": {
+      "name": "奢侈品",
+      "description": "假装买包、腕表、珠宝——反正不花钱"
+    },
+    "food": {
+      "name": "美食外卖",
+      "description": "假装点米其林、怀石料理——视觉盛宴"
+    },
+    "live": {
+      "name": "直播带货",
+      "description": "感受3-2-1上链接的肾上腺素"
+    },
+    "travel": {
+      "name": "旅行度假",
+      "description": "假装订马尔代夫水上别墅"
+    }
+  },
+  "moods": {
+    "boost": {
+      "label": "来点力量",
+      "description": "用大胆的单品为你的气场注入能量"
+    },
+    "heal": {
+      "label": "需要治愈",
+      "description": "在柔软质感与舒缓香氛中找到平静"
+    },
+    "indulge": {
+      "label": "犒赏自己",
+      "description": "用非凡之物宠爱自己"
+    }
+  },
+  "browse": {
+    "back": "返回",
+    "dopamineEarned": "+1 多巴胺",
+    "simButton": "模拟下单",
+    "favorite": "收藏",
+    "modes": {
+      "boost": "力量模式",
+      "boostDesc": "能量觉醒",
+      "heal": "治愈模式",
+      "healDesc": "温柔疗愈",
+      "indulge": "犒赏模式",
+      "indulgeDesc": "极度宠爱"
+    }
+  },
+  "product": {
+    "back": "返回",
+    "share": "分享",
+    "addToCart": "加入购物车",
+    "simOrder": "模拟下单（不花钱）",
+    "brandStory": "品牌故事",
+    "expandStory": "展开阅读",
+    "collapseStory": "收起",
+    "authInfo": "鉴定信息",
+    "verified": "中检认证",
+    "authentic": "正品保障",
+    "viewReport": "查看鉴定报告",
+    "youMayLike": "你可能也喜欢",
+    "installment": "或 {count} 期 ¥{amount}/期",
+    "discount": "{percent}折",
+    "outOfStock": "已售罄",
+    "limited": "仅剩 {count} 件"
+  },
+  "simOrder": {
+    "title": "你的虚拟购物车",
+    "subtitle": "随便加，反正不花钱",
+    "total": "共计 {count} 件",
+    "totalAmount": "总计",
+    "submitButton": "假装下单！",
+    "backToShop": "返回继续逛",
+    "emptyTitle": "你的虚拟购物车是空的",
+    "emptyDesc": "去挑几件心动的吧",
+    "emptyAction": "去逛逛",
+    "processing": {
+      "preparing": "正在为您准备...",
+      "packaging": "正在包装...",
+      "delivering": "即将送达..."
+    },
+    "result": {
+      "boughtTitle": "你刚刚「买」了",
+      "stuff": "的东西！",
+      "saved": "但你省下了",
+      "dopamine": "多巴胺",
+      "share": "分享战绩",
+      "continue": "继续逛"
+    },
+    "sharePrompt": {
+      "saveImage": "保存图片",
+      "shareWechat": "分享到微信",
+      "shareXiaohongshu": "分享到小红书",
+      "cancel": "取消"
+    }
+  },
+  "cart": {
+    "title": "我的购物车",
+    "edit": "编辑",
+    "emptyTitle": "你的衣帽间还空着呢",
+    "emptyDesc": "去给自己找点快乐",
+    "emptyAction": "去逛逛",
+    "subtotal": "小计",
+    "shipping": "运费",
+    "free": "免费",
+    "total": "总计",
+    "checkout": "确认结账",
+    "notSure": "还不想买？",
+    "addToWishlist": "加入 Wishlist",
+    "simPlay": "模拟下单玩玩"
+  },
+  "checkout": {
+    "title": "确认结账",
+    "steps": {
+      "address": "地址",
+      "confirm": "确认",
+      "pay": "支付",
+      "done": "完成"
+    },
+    "addAddress": "添加新地址",
+    "next": "下一步",
+    "confirmPay": "确认并支付",
+    "pay": "支付",
+    "couponPlaceholder": "输入优惠码",
+    "apply": "应用",
+    "detail": {
+      "subtotal": "小计",
+      "shipping": "运费",
+      "discount": "折扣"
+    },
+    "success": {
+      "title": "支付成功！",
+      "delivery": "预计 3-5 天送达",
+      "orderNumber": "订单号",
+      "viewOrder": "查看订单",
+      "continueShopping": "继续逛"
+    }
+  },
+  "orders": {
+    "title": "我的订单",
+    "all": "全部",
+    "pending": "待付款",
+    "paid": "已付款",
+    "shipped": "已发货",
+    "completed": "已完成",
+    "emptyTitle": "还没有订单",
+    "emptyDesc": "去给自己买第一件战利品吧",
+    "emptyAction": "去逛逛",
+    "loadMore": "加载更多",
+    "orderNumber": "订单号"
+  },
+  "orderDetail": {
+    "title": "订单详情",
+    "share": "分享订单",
+    "timeline": {
+      "created": "下单成功",
+      "paid": "已付款",
+      "shipped": "已发货",
+      "delivered": "已签收"
+    },
+    "items": "商品明细",
+    "shipping": "收货信息",
+    "payment": "支付信息",
+    "paymentMethod": "支付方式",
+    "paymentTime": "支付时间",
+    "transactionId": "交易号",
+    "priceDetail": "价格明细",
+    "orderInfo": "订单信息",
+    "createdAt": "创建时间",
+    "updatedAt": "更新时间",
+    "actions": {
+      "payNow": "去支付",
+      "cancel": "取消订单",
+      "confirmReceive": "确认收货",
+      "tracking": "查看物流",
+      "buyAgain": "再次购买",
+      "afterSales": "申请售后"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "登录",
+      "email": "邮箱",
+      "emailPlaceholder": "email@example.com",
+      "password": "密码",
+      "forgotPassword": "忘记密码？",
+      "submit": "登录",
+      "loading": "登录中...",
+      "divider": "或",
+      "google": "Google 登录",
+      "github": "GitHub 登录",
+      "noAccount": "还没有账号？注册",
+      "error": "邮箱或密码错误"
+    },
+    "register": {
+      "title": "注册",
+      "name": "昵称",
+      "namePlaceholder": "你的昵称",
+      "email": "邮箱",
+      "emailPlaceholder": "email@example.com",
+      "password": "密码",
+      "submit": "注册",
+      "loading": "注册中...",
+      "hasAccount": "已有账号？登录",
+      "welcome": "欢迎来到 DOPA·LUX！",
+      "startExplore": "开始探索"
+    }
+  },
+  "profile": {
+    "title": "个人中心",
+    "dopaminePoints": "多巴胺积分",
+    "purchased": "已购 {count} 件",
+    "favorites": "我的收藏",
+    "viewAll": "查看全部",
+    "menu": {
+      "orders": "我的订单",
+      "addresses": "收货地址",
+      "favorites": "我的收藏",
+      "payment": "支付方式",
+      "settings": "设置",
+      "help": "帮助与反馈",
+      "language": "语言",
+      "logout": "退出登录"
+    }
+  },
+  "share": {
+    "title": "假装消费战绩",
+    "scanToVisit": "扫一扫，来逛逛",
+    "openApp": "打开 DOPA·LUX"
+  },
+  "admin": {
+    "sidebar": {
+      "title": "管理后台",
+      "products": "商品管理",
+      "orders": "订单管理",
+      "users": "用户管理",
+      "analytics": "数据概览",
+      "settings": "系统设置",
+      "backToSite": "返回前台"
+    },
+    "products": {
+      "title": "商品管理",
+      "add": "新增商品",
+      "search": "搜索商品...",
+      "columns": {
+        "id": "ID",
+        "product": "商品",
+        "category": "分类",
+        "price": "价格",
+        "stock": "库存",
+        "status": "状态",
+        "actions": "操作"
+      },
+      "emptyTitle": "还没有任何商品",
+      "emptyDesc": "点击「新增商品」开始添加"
+    },
+    "orders": {
+      "title": "订单管理",
+      "columns": {
+        "orderNumber": "订单号",
+        "user": "用户",
+        "amount": "金额",
+        "status": "状态",
+        "time": "时间",
+        "actions": "操作"
+      }
+    }
+  },
+  "category": {
+    "all": "全部",
+    "sort": {
+      "default": "默认",
+      "priceAsc": "价格从低到高",
+      "priceDesc": "价格从高到低",
+      "newest": "最新上架"
+    },
+    "filter": "筛选",
+    "priceRange": "价格区间",
+    "emptyTitle": "这个分类还没有商品",
+    "emptyDesc": "看看其他分类？",
+    "emptyAction": "浏览全部分类"
+  },
+  "footer": {
+    "tagline": "你的多巴胺奢侈品空间",
+    "copyright": "© 2026 DOPA·LUX. All rights reserved."
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "出错了",
+    "retry": "重试",
+    "close": "关闭",
+    "confirm": "确认",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑"
+  },
+  "language": {
+    "switch": "切换语言",
+    "zh": "中文",
+    "en": "English"
+  }
+}
