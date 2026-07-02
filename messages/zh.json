@@ -322,5 +322,75 @@
     "switch": "切换语言",
     "zh": "中文",
     "en": "English"
+  },
+  "vip": {
+    "title": "DOPA VIP",
+    "subtitle": "解锁无限多巴胺体验",
+    "monthly": "月度",
+    "monthlyPrice": "¥19.9",
+    "yearly": "年度",
+    "yearlyPrice": "¥199",
+    "savePercent": "省 17%",
+    "perMonth": "月",
+    "popular": "最受欢迎",
+    "subscribe": "立即订阅",
+    "benefitsTitle": "VIP 专属权益",
+    "benefitUnlimited": "无限模拟下单次数",
+    "benefit2x": "所有积分 2 倍加速",
+    "benefitSkins": "VIP 专属皮肤与光点",
+    "benefitGlimmer": "专属珊瑚色光点拖尾",
+    "benefitBadge": "VIP 皇冠头像标识"
+  },
+  "coins": {
+    "title": "DOPA 虚拟币",
+    "subtitle": "充值虚拟币，解锁高级模拟体验",
+    "balance": "余额",
+    "unit": "币",
+    "bonus": "赠送",
+    "buy": "购买",
+    "popular": "推荐",
+    "useTitle": "虚拟币可以做什么？",
+    "useSim": "解锁绝版限量虚拟商品",
+    "useSkin": "购买联名皮肤与主题",
+    "useGift": "赠送好友多巴胺惊喜",
+    "packages": {
+      "smallPrice": "¥6",
+      "mediumPrice": "¥30",
+      "largePrice": "¥98",
+      "megaPrice": "¥198"
+    }
+  },
+  "skins": {
+    "title": "皮肤商城",
+    "subtitle": "装扮你的多巴胺空间",
+    "limited": "限时",
+    "permanent": "永久",
+    "buy": "购买",
+    "jacquemus": {
+      "name": "Jacquemus 阳光暖调"
+    },
+    "offwhite": {
+      "name": "Off-White 工业风"
+    },
+    "gm": {
+      "name": "Gentle Monster 超现实"
+    },
+    "spring": {
+      "name": "春日限定樱花"
+    }
+  },
+  "leaderboard": {
+    "title": "多巴胺排行榜",
+    "subtitle": "看看谁是今天的多巴胺之王",
+    "myRank": "我的排名",
+    "level": "等级",
+    "notRanked": "未上榜",
+    "getBoost": "VIP 加速升级",
+    "titles": {
+      "king": "多巴胺之王",
+      "guru": "时尚教主",
+      "connoisseur": "奢侈品鉴赏家",
+      "hunter": "潮流猎手"
+    }
   }
 }

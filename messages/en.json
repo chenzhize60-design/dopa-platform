@@ -322,5 +322,75 @@
     "switch": "Switch Language",
     "zh": "中文",
     "en": "English"
+  },
+  "vip": {
+    "title": "DOPA VIP",
+    "subtitle": "Unlock unlimited dopamine experiences",
+    "monthly": "Monthly",
+    "monthlyPrice": "$2.99",
+    "yearly": "Yearly",
+    "yearlyPrice": "$29.9",
+    "savePercent": "Save 17%",
+    "perMonth": "mo",
+    "popular": "Most Popular",
+    "subscribe": "Subscribe Now",
+    "benefitsTitle": "VIP Exclusive Benefits",
+    "benefitUnlimited": "Unlimited Sim Orders",
+    "benefit2x": "2x Points on Everything",
+    "benefitSkins": "VIP Exclusive Skins",
+    "benefitGlimmer": "Exclusive Coral Glimmer Trail",
+    "benefitBadge": "VIP Crown Badge"
+  },
+  "coins": {
+    "title": "DOPA Coins",
+    "subtitle": "Purchase coins to unlock premium sim experiences",
+    "balance": "Balance",
+    "unit": "coins",
+    "bonus": "bonus",
+    "buy": "Buy",
+    "popular": "Popular",
+    "useTitle": "What can coins do?",
+    "useSim": "Unlock rare limited virtual items",
+    "useSkin": "Buy exclusive skins & themes",
+    "useGift": "Send dopamine surprises to friends",
+    "packages": {
+      "smallPrice": "$0.99",
+      "mediumPrice": "$4.99",
+      "largePrice": "$14.99",
+      "megaPrice": "$29.99"
+    }
+  },
+  "skins": {
+    "title": "Skin Store",
+    "subtitle": "Customize your dopamine space",
+    "limited": "Limited",
+    "permanent": "Permanent",
+    "buy": "Buy",
+    "jacquemus": {
+      "name": "Jacquemus Sunlit"
+    },
+    "offwhite": {
+      "name": "Off-White Industrial"
+    },
+    "gm": {
+      "name": "Gentle Monster Surreal"
+    },
+    "spring": {
+      "name": "Spring Blossom"
+    }
+  },
+  "leaderboard": {
+    "title": "Dopamine Leaderboard",
+    "subtitle": "See who's the dopamine king today",
+    "myRank": "My Rank",
+    "level": "Level",
+    "notRanked": "Not Ranked",
+    "getBoost": "VIP Boost",
+    "titles": {
+      "king": "Dopamine King",
+      "guru": "Fashion Guru",
+      "connoisseur": "Luxury Connoisseur",
+      "hunter": "Trend Hunter"
+    }
   }
 }

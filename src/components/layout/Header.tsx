@@ -22,24 +22,30 @@ export function Header() {
         </Link>
 
         {/* Nav — desktop */}
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-5">
           <Link
-            href={`/${locale}/browse/boost`}
+            href={`/${locale}/channel/luxury/browse/boost`}
             className="text-sm text-text-secondary hover:text-text-primary transition-colors duration-150"
           >
             {t("header.nav.shop")}
-          </Link>
-          <Link
-            href={`/${locale}/category/all`}
-            className="text-sm text-text-secondary hover:text-text-primary transition-colors duration-150"
-          >
-            Categories
           </Link>
           <Link
             href={`/${locale}/sim-order`}
             className="text-sm text-text-secondary hover:text-brand transition-colors duration-150"
           >
             {t("header.nav.sim")}
+          </Link>
+          <Link
+            href={`/${locale}/vip`}
+            className="text-sm font-medium text-joy hover:brightness-110 transition-all duration-150"
+          >
+            VIP
+          </Link>
+          <Link
+            href={`/${locale}/leaderboard`}
+            className="text-sm text-text-secondary hover:text-text-primary transition-colors duration-150"
+          >
+            {t("leaderboard.title")}
           </Link>
         </nav>
 
