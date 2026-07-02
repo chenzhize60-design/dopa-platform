@@ -1,8 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 interface MoodCardProps {
   icon: LucideIcon;
@@ -28,53 +26,54 @@ export function MoodCard({
   className,
 }: MoodCardProps) {
   return (
-    <motion.button
+    <div
       onClick={onClick}
-      whileHover={{ scale: 1.02, y: -2 }}
-      whileTap={{ scale: 0.98 }}
-      transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-      className={cn(
-        "group relative flex flex-col items-center gap-4 p-8 rounded-[var(--radius-card)] border cursor-pointer text-left w-full",
-        "transition-shadow duration-250 ease-[cubic-bezier(0.4,0,0.2,1)]",
-        className
-      )}
-      style={{
-        backgroundColor: "var(--bg-elevated)",
-        borderColor: borderColor,
-        boxShadow: "0 1px 2px rgba(0,0,0,0.04), 0 4px 8px rgba(0,0,0,0.06)",
-      }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.boxShadow = `0 0 60px ${glowColor}`;
-        (e.currentTarget as HTMLElement).style.borderColor = color;
+        const el = e.currentTarget;
+        el.style.boxShadow = `0 0 80px ${glowColor}, 0 0 0 1px ${color}`;
+        el.style.borderColor = color;
+        el.style.backgroundColor = bgMuted;
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.boxShadow =
-          "0 1px 2px rgba(0,0,0,0.04), 0 4px 8px rgba(0,0,0,0.06)";
-        (e.currentTarget as HTMLElement).style.borderColor = borderColor;
+        const el = e.currentTarget;
+        el.style.boxShadow = "0 4px 24px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06)";
+        el.style.borderColor = borderColor;
+        el.style.backgroundColor = "var(--bg-elevated)";
+      }}
+      className={[
+        "group relative flex flex-col items-center gap-4 p-8 rounded-2xl border cursor-pointer text-left w-full",
+        "transition-all duration-300 ease-out",
+        className,
+      ].join(" ")}
+      style={{
+        backgroundColor: "var(--bg-elevated)",
+        borderColor,
+        boxShadow: "0 4px 24px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06)",
       }}
     >
-      {/* Icon container */}
+      {/* Glow blob behind icon on hover */}
       <div
-        className="flex items-center justify-center size-16 rounded-2xl transition-transform duration-250 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:scale-110"
-        style={{
-          backgroundColor: bgMuted,
-        }}
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        style={{ backgroundColor: glowColor }}
+      />
+
+      {/* Icon */}
+      <div
+        className="relative flex items-center justify-center size-16 rounded-2xl transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
+        style={{ backgroundColor: bgMuted }}
       >
-        <Icon className="size-8" style={{ color }} />
+        <Icon className="size-7 transition-transform duration-300 group-hover:scale-110" style={{ color }} />
       </div>
 
       {/* Label */}
-      <span
-        className="text-lg font-display font-bold"
-        style={{ color: "var(--text-primary)" }}
-      >
+      <span className="text-lg font-display font-bold relative z-10" style={{ color: "var(--text-primary)" }}>
         {label}
       </span>
 
       {/* Description */}
-      <span className="text-sm text-text-secondary text-center leading-relaxed">
+      <span className="text-sm text-center leading-relaxed relative z-10" style={{ color: "var(--text-secondary)" }}>
         {description}
       </span>
-    </motion.button>
+    </div>
   );
 }

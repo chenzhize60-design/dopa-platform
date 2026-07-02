@@ -1,118 +1,183 @@
 @import "tailwindcss";
 
 /* ============================================
-   Dopamine Luxury — Design Tokens
-   Default: Dark Mode
+   DOPA — Design Tokens & Animation System
+   Default: Dark Mode · Curated Maximalism
    ============================================ */
 
 :root {
-  /* --- Warm Dark Base --- */
   --color-base-0: #0D0D0F;
   --color-base-50: #141416;
   --color-base-100: #1A1A1D;
   --color-base-200: #222227;
   --color-base-300: #2C2C32;
-
-  /* --- Text --- */
   --text-primary: #F5F5F5;
   --text-secondary: #A1A1A6;
   --text-muted: #6E6E73;
-
-  /* --- Brand Colors --- */
   --brand: #FF3B5C;
   --brand-hover: #FF7B7B;
   --brand-active: #E8324F;
   --brand-glow: rgba(255, 59, 92, 0.20);
   --brand-subtle: rgba(255, 59, 92, 0.10);
-
+  --brand-muted: rgba(255, 59, 92, 0.06);
   --joy: #FFD60A;
   --joy-glow: rgba(255, 214, 10, 0.18);
   --joy-subtle: rgba(255, 214, 10, 0.10);
-
+  --joy-muted: rgba(255, 214, 10, 0.06);
   --heal: #00D4C8;
   --heal-glow: rgba(0, 212, 200, 0.18);
   --heal-subtle: rgba(0, 212, 200, 0.10);
-
+  --heal-muted: rgba(0, 212, 200, 0.06);
   --alert: #FF8C42;
-  --alert-glow: rgba(255, 140, 66, 0.18);
-
-  /* --- Layout --- */
   --bg-primary: var(--color-base-0);
   --bg-surface: var(--color-base-50);
   --bg-elevated: var(--color-base-100);
   --bg-overlay: rgba(0, 0, 0, 0.65);
-
   --border-default: #2C2C32;
   --border-subtle: #1A1A1D;
-
-  /* --- Shadows / Glows --- */
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.06);
-  --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.10);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06);
+  --shadow-card-hover: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.10);
   --shadow-glow-brand: 0 0 40px var(--brand-glow);
   --shadow-glow-joy: 0 0 40px var(--joy-glow);
   --shadow-glow-heal: 0 0 40px var(--heal-glow);
-
-  /* --- Radii --- */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
-
-  /* --- Fonts --- */
+  --radius-sm: 4px; --radius-md: 8px; --radius-lg: 16px; --radius-xl: 24px; --radius-full: 9999px;
   --font-display: "Satoshi", -apple-system, sans-serif;
   --font-body: "Inter", "Noto Sans SC", -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
-
-  /* --- Duration --- */
-  --duration-instant: 100ms;
-  --duration-fast: 200ms;
-  --duration-normal: 350ms;
-  --duration-slow: 500ms;
-  --duration-dramatic: 800ms;
-
-  /* Charts - no purple (#8B5CF6 → Coral) */
-  --chart-1: #FF3B5C;
-  --chart-2: #FFD60A;
-  --chart-3: #00D4C8;
-  --chart-4: #FF8C42;
-  --chart-5: #FF3B5C;
-
-  --sidebar: #0D0D0F;
-  --sidebar-foreground: #F0F0F2;
+  --chart-1: #FF3B5C; --chart-2: #FFD60A; --chart-3: #00D4C8; --chart-4: #FF8C42; --chart-5: #FF3B5C;
+  --sidebar: #0D0D0F; --sidebar-foreground: #F0F0F2;
 }
-
-/* ============================================
-   Tailwind Theme Mapping
-   ============================================ */
 
 @theme inline {
   --color-brand: var(--brand);
   --color-brand-hover: var(--brand-hover);
   --color-brand-active: var(--brand-active);
+  --color-brand-muted: var(--brand-muted);
   --color-joy: var(--joy);
+  --color-joy-muted: var(--joy-muted);
   --color-heal: var(--heal);
+  --color-heal-muted: var(--heal-muted);
   --color-alert: var(--alert);
-
   --color-bg-primary: var(--bg-primary);
   --color-bg-surface: var(--bg-surface);
   --color-bg-elevated: var(--bg-elevated);
-
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
-
   --color-border-default: var(--border-default);
   --color-border-subtle: var(--border-subtle);
-
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-mono: var(--font-mono);
-
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
   --radius-xl: var(--radius-xl);
   --radius-full: var(--radius-full);
+}
+
+/* ============================================
+   Animation Keyframes
+   ============================================ */
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes particle-drift {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  20% { opacity: 0.8; }
+  80% { opacity: 0.4; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(0.3); opacity: 0; }
+}
+@keyframes border-glow {
+  0%, 100% { border-color: rgba(255,255,255,0.06); }
+  50% { border-color: var(--brand); }
+}
+
+/* ============================================
+   Animation Utility Classes
+   ============================================ */
+
+.animate-fade-up {
+  animation: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.animate-fade-in {
+  animation: fade-in 0.4s ease both;
+}
+.animate-scale-in {
+  animation: scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+.animate-border-glow {
+  animation: border-glow 3s ease-in-out infinite;
+}
+
+/* Stagger children */
+.stagger > * {
+  opacity: 0;
+  animation: fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger > *:nth-child(2) { animation-delay: 0.12s; }
+.stagger > *:nth-child(3) { animation-delay: 0.19s; }
+.stagger > *:nth-child(4) { animation-delay: 0.26s; }
+.stagger > *:nth-child(5) { animation-delay: 0.33s; }
+.stagger > *:nth-child(6) { animation-delay: 0.40s; }
+.stagger > *:nth-child(7) { animation-delay: 0.47s; }
+.stagger > *:nth-child(8) { animation-delay: 0.54s; }
+
+/* ============================================
+   Card & Interactive Polish
+   ============================================ */
+
+.card-magnetic {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.2s ease;
+}
+.card-magnetic:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(255,255,255,0.1);
+}
+.card-magnetic:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Glass surface for overlays */
+.glass-surface {
+  background: rgba(20, 20, 22, 0.85);
+  border: 1px solid rgba(255,255,255,0.08);
 }
 
 /* ============================================
@@ -127,10 +192,69 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Gradient text for brand / hero */
+::selection {
+  background: var(--brand-subtle);
+  color: var(--brand);
+}
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--color-base-200);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-base-300);
+}
+
+/* Gradient text */
 .text-gradient-brand {
   background: linear-gradient(135deg, #FF3B5C 0%, #FF7B7B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+.text-gradient-joy {
+  background: linear-gradient(135deg, #FFD60A 0%, #FFE44D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.text-gradient-heal {
+  background: linear-gradient(135deg, #00D4C8 0%, #5EEAD4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow rings for cards */
+.glow-ring-brand { box-shadow: 0 0 30px rgba(255,59,92,0.15); }
+.glow-ring-joy { box-shadow: 0 0 30px rgba(255,214,10,0.15); }
+.glow-ring-heal { box-shadow: 0 0 30px rgba(0,212,200,0.15); }
+
+/* Section dividers */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-default) 20%, var(--border-default) 80%, transparent);
+}
+
+/* Page transition wrapper */
+.page-enter {
+  animation: fade-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
