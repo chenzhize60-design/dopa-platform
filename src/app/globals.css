@@ -2,144 +2,99 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 /* ============================================
-   DOPA · Vibrant Block Design System
-   Style: Vibrant & Block-based (Dark)
-   Per UI-UX Pro Max recommendation
+   DOPA · Sophisticated Block Design System
+   Refined: deep tonal blocks, not neon
+   Per UI-UX Pro Max with user refinement
    ============================================ */
 
 :root {
-  /* Vibrant palette — bold electric colors against dark */
-  --coral:  #FF3B5C;
-  --violet: #A855F7;
-  --cyan:   #00D4C8;
-  --amber:  #FFD60A;
-  --rose:   #FB7185;
+  /* Refined brand accents — pops of color on dark */
+  --accent-coral: #FF5A6E;
+  --accent-mint: #00C9B6;
+  --accent-gold: #E8C300;
 
-  /* Dark base layers */
-  --abyss:   #050508;
-  --void:    #0A0A0F;
-  --obsidian:#101016;
-  --onyx:    #18181F;
+  /* Deep block tones — sophisticated, not loud */
+  --block-1: #1A1520;
+  --block-2: #1E1B2E;
+  --block-3: #152022;
+  --block-4: #1E1A15;
 
-  /* Text — high contrast against dark */
-  --text-0: #F8F8FC;
-  --text-1: #A0A0B0;
-  --text-2: #606070;
+  /* Base layers */
+  --abyss: #0D0B10;
+  --void: #121016;
+  --surface: #1A1720;
+  --elevated: #221F2A;
 
-  /* Layout */
-  --gap-block: 3rem;
+  /* Text */
+  --text-0: #F0EDF5;
+  --text-1: #9D98A8;
+  --text-2: #686478;
+  --text-3: #3E3A48;
 
   /* Typography */
   --font-display: "Inter", -apple-system, sans-serif;
   --font-body: "Inter", "Noto Sans SC", -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
-
-  --radius-none: 0;
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
 }
 
 @theme inline {
-  --color-coral: var(--coral); --color-violet: var(--violet);
-  --color-cyan: var(--cyan); --color-amber: var(--amber); --color-rose: var(--rose);
-  --color-brand: var(--coral); --color-joy: var(--amber); --color-heal: var(--cyan);
-  --color-alert: var(--rose);
-  --color-bg-primary: var(--abyss); --color-bg-surface: var(--void);
-  --color-bg-elevated: var(--obsidian); --color-bg-overlay: var(--onyx);
-  --color-text-0: var(--text-0); --color-text-1: var(--text-1); --color-text-2: var(--text-2);
-  --color-text-primary: var(--text-0); --color-text-secondary: var(--text-1);
-  --color-text-muted: var(--text-2);
-  --color-border-default: rgba(255,255,255,0.08);
-  --color-border-subtle: rgba(255,255,255,0.04);
-  --font-display: var(--font-display); --font-body: var(--font-body); --font-mono: var(--font-mono);
-  --radius-md: var(--radius-md); --radius-lg: var(--radius-lg);
-  --radius-xl: var(--radius-xl); --radius-full: 9999px;
+  --color-brand: var(--accent-coral); --color-joy: var(--accent-gold); --color-heal: var(--accent-mint);
+  --color-bg-primary: var(--abyss); --color-bg-surface: var(--void); --color-bg-elevated: var(--elevated);
+  --color-text-0: var(--text-0); --color-text-1: var(--text-1); --color-text-2: var(--text-2); --color-text-3: var(--text-3);
+  --color-text-primary: var(--text-0); --color-text-secondary: var(--text-1); --color-text-muted: var(--text-2);
+  --font-display: var(--font-display); --font-body: var(--font-body);
 }
 
 /* ============================================
-   Block System
+   Blocks — deep tonal, not saturated
    ============================================ */
 
-.block-section {
-  padding: 5rem 1.5rem;
-}
-.block-section-sm {
-  padding: 3rem 1.5rem;
-}
+.block-1 { background: var(--block-1); color: var(--text-0); }
+.block-2 { background: var(--block-2); color: var(--text-0); }
+.block-3 { background: var(--block-3); color: var(--text-0); }
+.block-4 { background: var(--block-4); color: var(--text-0); }
+.block-0 { background: var(--void); }
 
-.block-coral  { background: var(--coral); color: #fff; }
-.block-violet { background: var(--violet); color: #fff; }
-.block-cyan    { background: var(--cyan); color: #050508; }
-.block-amber   { background: var(--amber); color: #050508; }
-.block-dark    { background: var(--void); }
-.block-abyss   { background: var(--abyss); }
+.block-breathe { padding: 6rem 1.5rem; }
+.block-comfortable { padding: 4rem 1.5rem; }
 
-.block-pattern {
-  background-image:
-    radial-gradient(circle at 20% 50%, var(--coral) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, var(--violet) 0%, transparent 40%),
-    radial-gradient(circle at 50% 80%, var(--cyan) 0%, transparent 40%);
-  background-size: 100% 100%;
-}
-
-.block-dots {
-  background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-.block-grid {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+/* Subtle textures */
+.block-grain {
+  background-image: radial-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
 /* ============================================
-   Typography Scale
+   Typography
    ============================================ */
 
-.headline-xl  { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 7rem); font-weight: 900; line-height: 0.92; letter-spacing: -0.03em; }
-.headline-lg  { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 4rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; }
-.headline-md  { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.1; }
+.headline-xl  { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 5.5rem); font-weight: 900; line-height: 0.94; letter-spacing: -0.03em; }
+.headline-lg  { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.5rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; }
 
 /* ============================================
-   Cards — bold, not subtle
+   Cards
    ============================================ */
 
 .card-block {
-  background: var(--obsidian);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: var(--radius-xl);
-  padding: 2rem;
-  transition: all 0.25s ease;
-}
-.card-block:hover {
-  border-color: var(--coral);
-  transform: translateY(-4px);
-  box-shadow: 0 0 60px rgba(255,59,92,0.15);
-}
-
-.card-color {
-  border-radius: var(--radius-xl);
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 1.5rem;
   padding: 2rem;
   transition: all 0.3s ease;
-  cursor: pointer;
 }
-.card-color:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+.card-block:hover {
+  border-color: rgba(255,255,255,0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
 }
 
 /* ============================================
-   Navigation — bold blocks
+   Navigation
    ============================================ */
 
 .nav-block {
-  background: rgba(10, 10, 15, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  background: rgba(13, 11, 16, 0.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 
 /* ============================================
@@ -147,22 +102,17 @@
    ============================================ */
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(48px); }
+  from { opacity: 0; transform: translateY(32px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@keyframes pulse-block {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-@keyframes slide-left {
-  from { opacity: 0; transform: translateX(-40px); }
-  to { opacity: 1; transform: translateX(0); }
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
 }
 
-.animate-fade-up  { animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
-.animate-pulse-block { animation: pulse-block 3s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-pulse-subtle { animation: pulse-subtle 3s ease-in-out infinite; }
 
-/* Stagger */
 .stagger > * { opacity: 0; animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
 .stagger > *:nth-child(1) { animation-delay: 0s; }
 .stagger > *:nth-child(2) { animation-delay: 0.1s; }
@@ -175,20 +125,19 @@
    Global
    ============================================ */
 
-html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-body);
   color: var(--text-0);
   background: var(--abyss);
   -webkit-font-smoothing: antialiased;
 }
-::selection { background: var(--coral); color: white; }
-*:focus-visible { outline: 3px solid var(--coral); outline-offset: 2px; }
+::selection { background: rgba(255,90,110,0.25); color: var(--text-0); }
+*:focus-visible { outline: 2px solid var(--accent-coral); outline-offset: 3px; border-radius: 4px; }
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--onyx); border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: var(--elevated); border-radius: 2px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; }
-  html { scroll-snap-type: none; }
 }
