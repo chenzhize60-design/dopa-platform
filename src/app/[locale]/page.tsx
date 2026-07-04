@@ -32,9 +32,14 @@ export default function HomePage() {
     <div className="min-h-screen flex flex-col page-enter">
       <Header />
 
-      {/* ── Hero — pure typography drama ── */}
-      <section className="relative flex flex-col items-center justify-center px-4 pt-28 sm:pt-40 pb-20 overflow-hidden">
-        <GlimmerParticles count={20} className="absolute inset-0 opacity-30" />
+      {/* ── Hero — liquid glass, morphing blobs ── */}
+      <section className="relative flex flex-col items-center justify-center px-4 pt-32 sm:pt-44 pb-24 overflow-hidden">
+        {/* Morphing gradient blobs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="morph-blob morph-blob-1" />
+          <div className="morph-blob morph-blob-2" />
+          <div className="morph-blob morph-blob-3" />
+        </div>
 
         <div className="relative z-10 flex flex-col items-center text-center max-w-4xl">
           {/* Brand badge */}
@@ -58,7 +63,7 @@ export default function HomePage() {
           <div className="animate-fade-up grid grid-cols-3 gap-3 mt-12 w-full max-w-lg" style={{ animationDelay: "0.4s" }}>
             {moodDefs.map((mood) => (
               <Link key={mood.key} href={`/${locale}/channel/luxury/browse/${mood.key}`}>
-                <div className="group flex flex-col items-center gap-2 p-4 rounded-2xl border border-transparent hover:border-white/[0.06] bg-bg-secondary/50 hover:bg-bg-tertiary transition-all duration-500 cursor-pointer">
+                <div className="group flex flex-col items-center gap-2 p-4 rounded-2xl border border-transparent hover:border-white/[0.06] bg-transparent/50 hover:bg-bg-tertiary transition-all duration-500 cursor-pointer">
                   <div className="size-12 rounded-xl flex items-center justify-center transition-transform duration-500 group-hover:scale-110" style={{ backgroundColor: mood.bgMuted }}>
                     <mood.icon className="size-5" style={{ color: mood.color }} />
                   </div>
@@ -88,7 +93,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {/* Large hero card */}
           {trending[0] && (
-            <Link href={`/${locale}/channel/luxury/product/${trending[0].slug}`} className="sm:col-span-2 sm:row-span-2 card-luxury group relative rounded-2xl overflow-hidden bg-bg-secondary border border-border-subtle">
+            <Link href={`/${locale}/channel/luxury/product/${trending[0].slug}`} className="sm:col-span-2 sm:row-span-2 glass-card group relative rounded-2xl overflow-hidden bg-transparent border border-border-subtle">
               <div className="absolute inset-0">
                 <img src={trending[0].images[0]} alt={trending[0].name} className="size-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/20 to-transparent" />
@@ -110,7 +115,7 @@ export default function HomePage() {
           {/* Secondary cards */}
           {trending.slice(1, 5).map((p, i) => (
             <Link key={p.slug} href={`/${locale}/channel/luxury/product/${p.slug}`}
-              className="card-luxury group relative rounded-2xl overflow-hidden bg-bg-secondary border border-border-subtle"
+              className="glass-card group relative rounded-2xl overflow-hidden bg-transparent border border-border-subtle"
               style={{ animation: "fade-up 0.5s var(--ease-out-expo) both", animationDelay: `${0.3 + i * 0.06}s` }}>
               <div className="aspect-[4/5] overflow-hidden">
                 <img src={p.images[0]} alt={p.name} className="size-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
@@ -141,7 +146,7 @@ export default function HomePage() {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 stagger">
           {channels.map((ch) => {
             const Icon = iconMap[ch.icon];
-            return <Link key={ch.id} href={`/${locale}/${ch.route}`}><div className="card-luxury"><ChannelCard icon={Icon} name={t(ch.nameKey)} description={t(ch.descriptionKey)} color={ch.color} glowColor={ch.glowColor} bgMuted={ch.bgMuted} /></div></Link>;
+            return <Link key={ch.id} href={`/${locale}/${ch.route}`}><div className="glass-card"><ChannelCard icon={Icon} name={t(ch.nameKey)} description={t(ch.descriptionKey)} color={ch.color} glowColor={ch.glowColor} bgMuted={ch.bgMuted} /></div></Link>;
           })}
         </div>
       </section>
@@ -157,7 +162,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {featured.map((p, i) => (
             <Link key={p.slug} href={`/${locale}/channel/luxury/product/${p.slug}`}
-              className="card-luxury group relative rounded-2xl overflow-hidden bg-bg-secondary border border-border-subtle"
+              className="glass-card group relative rounded-2xl overflow-hidden bg-transparent border border-border-subtle"
               style={{ animation: "fade-up 0.5s var(--ease-out-expo) both", animationDelay: `${0.2 + i * 0.06}s` }}>
               <div className="aspect-[4/3] overflow-hidden">
                 <img src={p.images[0]} alt={p.name} className="size-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
@@ -194,7 +199,7 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {hotFood.map((f, i) => (
-            <Link key={f.slug} href={`/${locale}/channel/food`} className="card-luxury group relative rounded-2xl overflow-hidden bg-bg-secondary border border-border-subtle"
+            <Link key={f.slug} href={`/${locale}/channel/food`} className="glass-card group relative rounded-2xl overflow-hidden bg-transparent border border-border-subtle"
               style={{ animation: "fade-up 0.4s var(--ease-out-expo) both", animationDelay: `${i * 0.06}s` }}>
               <div className="aspect-square overflow-hidden">
                 <img src={f.image} alt={f.name} className="size-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
@@ -223,7 +228,7 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {hotLive.map((live, i) => (
-            <Link key={live.slug} href={`/${locale}/channel/live`} className="card-luxury group relative rounded-2xl overflow-hidden bg-bg-secondary border border-border-subtle"
+            <Link key={live.slug} href={`/${locale}/channel/live`} className="glass-card group relative rounded-2xl overflow-hidden bg-transparent border border-border-subtle"
               style={{ animation: "fade-up 0.4s var(--ease-out-expo) both", animationDelay: `${i * 0.08}s` }}>
               <div className="relative aspect-video overflow-hidden">
                 <img src={live.image} alt={live.title} className="size-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
