@@ -45,13 +45,13 @@ export default function HomePage() {
 
           {/* Main headline */}
           <h1 className="animate-fade-up font-display font-black text-5xl sm:text-6xl lg:text-7xl text-text-0 leading-[0.95] tracking-tight" style={{ animationDelay: "0.1s" }}>
-            {t("home.heroLine1")}<br />
+            <span className="block">{t("home.heroLine1")}</span>
             <span className="text-gradient-brand">{t("home.heroLine2")}</span>
           </h1>
 
           {/* Subtitle */}
           <p className="animate-fade-up mt-8 text-base sm:text-lg text-text-1 max-w-md leading-relaxed" style={{ animationDelay: "0.25s" }}>
-            Not what you buy. How you feel when you browse. Pick a mood. Enter a world.
+            {t("home.subtitle")}
           </p>
 
           {/* Mood cards — subtle, below hero */}
@@ -80,7 +80,7 @@ export default function HomePage() {
             <h2 className="text-3xl sm:text-4xl font-display font-black text-text-0 tracking-tight">{t("home.trendingTitle")}</h2>
           </div>
           <Link href={`/${locale}/channel/luxury/browse/boost`} className="hidden sm:flex items-center gap-1.5 text-sm text-text-2 hover:text-brand transition-colors duration-200">
-            View all <ArrowRight className="size-3.5" />
+            {t("home.viewAll")} <ArrowRight className="size-3.5" />
           </Link>
         </div>
 

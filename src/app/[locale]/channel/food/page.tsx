@@ -30,7 +30,7 @@ export default function FoodChannelPage() {
               <span className="text-[10px] tracking-[0.3em] uppercase font-semibold text-heal">{t("channels.food.name")}</span>
             </div>
             <h1 className="animate-fade-up font-display font-black text-5xl sm:text-6xl text-text-0 leading-[0.95] tracking-tight" style={{ animationDelay: "0.1s" }}>
-              假装点<br />
+              <span className="block">假装点</span>
               <span className="text-gradient-heal">米其林。</span>
             </h1>
             <p className="animate-fade-up mt-6 text-text-1 max-w-md" style={{ animationDelay: "0.2s" }}>

@@ -29,7 +29,7 @@ export default function LiveChannelPage() {
               <span className="text-[10px] tracking-[0.3em] uppercase font-semibold text-joy">🔴 LIVE</span>
             </div>
             <h1 className="animate-fade-up font-display font-black text-5xl sm:text-6xl text-text-0 leading-[0.95] tracking-tight" style={{ animationDelay: "0.1s" }}>
-              3—2—1<br />
+              <span className="block">3—2—1</span>
               <span className="text-gradient-joy">上链接！</span>
             </h1>
             <p className="animate-fade-up mt-6 text-text-1 max-w-md" style={{ animationDelay: "0.2s" }}>
