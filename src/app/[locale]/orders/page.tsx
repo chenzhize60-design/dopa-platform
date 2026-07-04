@@ -5,6 +5,7 @@ import { Package, ChevronRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Badge } from "@/components/brand/Badge";
+import { useTranslations } from "next-intl";
 
 const orders = [
   {
@@ -37,19 +38,20 @@ const statusConfig = {
 };
 
 export default function OrdersPage() {
+  const t = useTranslations();
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
 
       <main className="flex-1 max-w-3xl mx-auto px-4 sm:px-6 py-12 w-full">
         <h1 className="text-3xl font-display font-bold text-text-primary mb-8">
-          My Orders
+          {t("orders.title")}
         </h1>
 
         {orders.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-text-muted">
             <Package className="size-16 mb-4" />
-            <p className="text-lg">No orders yet</p>
+            <p className="text-lg">{t("orders.emptyTitle")}</p>
           </div>
         ) : (
           <div className="flex flex-col gap-4">

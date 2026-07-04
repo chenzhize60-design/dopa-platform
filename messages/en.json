@@ -1,396 +1,143 @@
 {
-  "meta": {
-    "title": "Dopamine Luxury — Mood-Driven Shopping",
-    "description": "A dopamine-fueled luxury shopping experience. Shop by mood, not by category."
-  },
-  "header": {
-    "nav": {
-      "shop": "Shop",
-      "sim": "Sim Order",
-      "cart": "Cart",
-      "orders": "Orders",
-      "profile": "Me"
-    },
-    "cartCount": "{count} items"
-  },
+  "meta": { "title": "DOPA — Mood is Currency", "description": "Shop by mood, not by category. Pick a feeling. Enter a world." },
+  "header": { "nav": { "shop": "Shop", "sim": "Sim Order", "cart": "Cart", "orders": "Orders", "profile": "Me", "vip": "VIP", "leaderboard": "Rank" }, "cartCount": "{count} items" },
   "home": {
     "badge": "Dopamine Hub",
-    "title": "How are you",
-    "titleHighlight": "feeling",
-    "titleEnd": "today?",
-    "subtitle": "Mood is the gateway. Pick a channel and start your dopamine journey.",
-    "pickChannel": "Pick a Channel",
-    "trending": "Trending Now",
-    "viewAll": "View all"
+    "heroLine1": "Mood is",
+    "heroLine2": "currency.",
+    "subtitle": "Not what you buy. How you feel when you browse. Pick a mood. Enter a world.",
+    "trending": "Trending",
+    "trendingTitle": "What they're watching.",
+    "viewAll": "View all →",
+    "moreWorlds": "More Worlds",
+    "newArrivals": "New Arrivals",
+    "newArrivalsTitle": "Just dropped.",
+    "pickChannel": "Pick a Channel"
   },
   "channels": {
-    "luxury": {
-      "name": "Luxury",
-      "description": "Pretend to buy bags, watches & jewelry — it's all free"
-    },
-    "food": {
-      "name": "Food Delivery",
-      "description": "Pretend to order Michelin-star meals — a visual feast"
-    },
-    "live": {
-      "name": "Livestream Shopping",
-      "description": "Feel the rush of \"3-2-1 GO!\" adrenaline"
-    },
-    "travel": {
-      "name": "Travel & Vacations",
-      "description": "Pretend to book a Maldives overwater villa"
-    }
+    "luxury": { "name": "Luxury", "description": "Pretend to buy bags, watches & jewelry — it's all free" },
+    "food": { "name": "Food Delivery", "description": "Pretend to order Michelin meals — visual feast" },
+    "live": { "name": "Livestream", "description": "Feel the \"3-2-1 GO!\" adrenaline rush" },
+    "travel": { "name": "Travel", "description": "Pretend to book the Maldives overwater villa" }
   },
   "moods": {
-    "boost": {
-      "label": "Boost",
-      "description": "Energize your presence with bold statement pieces"
-    },
-    "heal": {
-      "label": "Heal",
-      "description": "Find comfort in soft textures and calming scents"
-    },
-    "indulge": {
-      "label": "Indulge",
-      "description": "Treat yourself to the extraordinary"
-    }
+    "boost": { "label": "Boost", "description": "Bold statements. Unapologetic energy." },
+    "heal": { "label": "Heal", "description": "Soft textures. Calming beauty. A sanctuary." },
+    "indulge": { "label": "Indulge", "description": "The extraordinary. Because you can." }
   },
   "browse": {
     "back": "Back",
-    "dopamineEarned": "+1 Dopamine",
-    "simButton": "Sim Order",
-    "favorite": "Favorite",
-    "modes": {
-      "boost": "Boost Mode",
-      "boostDesc": "Energy Awakening",
-      "heal": "Heal Mode",
-      "healDesc": "Gentle Healing",
-      "indulge": "Indulge Mode",
-      "indulgeDesc": "Pure Indulgence"
-    }
+    "boostMode": "Power Mode", "healMode": "Heal Mode", "indulgeMode": "Indulge Mode",
+    "boostDesc": "Bold statements. Pieces that walk into the room before you do.",
+    "healDesc": "Soft textures. Calming beauty. A sanctuary wrapped in silk and scent.",
+    "indulgeDesc": "The extraordinary. The unnecessary. The thing you buy because you can.",
+    "pieces": "pieces · updated today",
+    "loadMore": "Load More",
+    "empty": "Nothing here yet.",
+    "onlyLeft": "Only {count} left",
+    "viewing": "{count} viewing"
   },
   "product": {
-    "back": "Back",
-    "share": "Share",
-    "addToCart": "Add to Cart",
-    "simOrder": "Sim Order (it's free)",
-    "brandStory": "Brand Story",
-    "expandStory": "Read More",
-    "collapseStory": "Collapse",
-    "authInfo": "Authentication",
-    "verified": "CCIC Certified",
-    "authentic": "Authenticity Guaranteed",
-    "viewReport": "View Auth Report",
-    "youMayLike": "You May Also Like",
-    "installment": "or {count} × ¥{amount}/mo",
-    "discount": "{percent}% OFF",
-    "outOfStock": "Sold Out",
-    "limited": "Only {count} left"
+    "back": "Back", "share": "Share", "save": "Save",
+    "addToCart": "Add to Cart", "simOrder": "Sim Order",
+    "brandStory": "Brand Story", "authInfo": "Authentication",
+    "verified": "CCIC Certified", "authentic": "Authenticity Guaranteed",
+    "viewReport": "View Auth Report", "youMayLike": "You May Also Like",
+    "viewingNow": "{count} people viewing now",
+    "reviews": "{count} reviews", "soldOut": "Sold Out",
+    "onlyLeft": "Only {count} left",
+    "notFound": "Product Not Found", "returnHome": "Return Home"
   },
   "simOrder": {
-    "title": "Your Virtual Cart",
-    "subtitle": "Add whatever you like — it's all pretend",
-    "total": "{count} items total",
-    "totalAmount": "Total",
-    "submitButton": "Pretend to Buy!",
-    "backToShop": "Keep Browsing",
-    "emptyTitle": "Your virtual cart is empty",
-    "emptyDesc": "Go pick something you love",
-    "emptyAction": "Browse",
-    "processing": {
-      "preparing": "Preparing your order...",
-      "packaging": "Wrapping it up...",
-      "delivering": "Almost there..."
-    },
-    "result": {
-      "boughtTitle": "You just \"bought\"",
-      "stuff": "worth of stuff!",
-      "saved": "But you saved",
-      "dopamine": "Dopamine",
-      "share": "Share Your Score",
-      "continue": "Keep Browsing"
-    },
-    "sharePrompt": {
-      "saveImage": "Save Image",
-      "shareWechat": "Share to WeChat",
-      "shareXiaohongshu": "Share to RED",
-      "cancel": "Cancel"
-    }
+    "title": "Virtual Cart", "subtitle": "Add whatever — it's all pretend",
+    "total": "{count} total", "totalAmount": "Total",
+    "submitButton": "Pretend to Buy!", "backToShop": "Keep Browsing",
+    "emptyTitle": "Your virtual cart is empty", "emptyDesc": "Go pick something you love", "emptyAction": "Browse",
+    "processing": { "preparing": "Preparing...", "packaging": "Wrapping...", "delivering": "Almost there..." },
+    "result": { "boughtTitle": "You just \"bought\"", "stuff": "worth of stuff!", "saved": "But you saved", "dopamine": "Dopamine", "share": "Share Score", "continue": "Keep Browsing" },
+    "sharePrompt": { "saveImage": "Save Image", "shareWechat": "Share to WeChat", "shareXiaohongshu": "Share to RED", "cancel": "Cancel" }
   },
   "cart": {
-    "title": "My Cart",
-    "edit": "Edit",
-    "emptyTitle": "Your wardrobe is empty",
-    "emptyDesc": "Go find something you love",
-    "emptyAction": "Browse",
-    "subtotal": "Subtotal",
-    "shipping": "Shipping",
-    "free": "Free",
-    "total": "Total",
-    "checkout": "Checkout",
-    "notSure": "Not ready?",
-    "addToWishlist": "Add to Wishlist",
-    "simPlay": "Try Sim Order"
+    "title": "My Cart", "edit": "Edit",
+    "emptyTitle": "Your wardrobe is empty", "emptyDesc": "Go find something you love", "emptyAction": "Browse",
+    "subtotal": "Subtotal", "shipping": "Shipping", "free": "Free", "total": "Total",
+    "checkout": "Checkout", "notSure": "Not ready?", "addToWishlist": "Add to Wishlist", "simPlay": "Try Sim Order"
   },
   "checkout": {
-    "title": "Checkout",
-    "steps": {
-      "address": "Address",
-      "confirm": "Confirm",
-      "pay": "Pay",
-      "done": "Done"
-    },
-    "addAddress": "Add New Address",
-    "next": "Next",
-    "confirmPay": "Confirm & Pay",
-    "pay": "Pay",
-    "couponPlaceholder": "Enter coupon code",
-    "apply": "Apply",
-    "detail": {
-      "subtotal": "Subtotal",
-      "shipping": "Shipping",
-      "discount": "Discount"
-    },
-    "success": {
-      "title": "Payment Successful!",
-      "delivery": "Estimated 3-5 day delivery",
-      "orderNumber": "Order #",
-      "viewOrder": "View Order",
-      "continueShopping": "Keep Shopping"
-    }
+    "title": "Checkout", "steps": { "address": "Address", "confirm": "Confirm", "pay": "Pay", "done": "Done" },
+    "addAddress": "Add New Address", "next": "Next", "confirmPay": "Confirm & Pay", "pay": "Pay",
+    "couponPlaceholder": "Enter coupon", "apply": "Apply",
+    "detail": { "subtotal": "Subtotal", "shipping": "Shipping", "discount": "Discount" },
+    "empty": "Your cart is empty",
+    "success": { "title": "Payment Successful!", "delivery": "Est. 3-5 day delivery", "orderNumber": "Order #", "viewOrder": "View Order", "continueShopping": "Keep Shopping" }
   },
   "orders": {
-    "title": "My Orders",
-    "all": "All",
-    "pending": "Unpaid",
-    "paid": "Paid",
-    "shipped": "Shipped",
-    "completed": "Completed",
-    "emptyTitle": "No orders yet",
-    "emptyDesc": "Go buy your first trophy",
-    "emptyAction": "Browse",
-    "loadMore": "Load More",
-    "orderNumber": "Order #"
+    "title": "My Orders", "all": "All", "pending": "Unpaid", "paid": "Paid", "shipped": "Shipped", "completed": "Completed",
+    "emptyTitle": "No orders yet", "emptyDesc": "Go buy your first trophy", "emptyAction": "Browse",
+    "loadMore": "Load More", "orderNumber": "Order #"
   },
   "orderDetail": {
-    "title": "Order Details",
-    "share": "Share Order",
-    "timeline": {
-      "created": "Order Placed",
-      "paid": "Paid",
-      "shipped": "Shipped",
-      "delivered": "Delivered"
-    },
-    "items": "Order Items",
-    "shipping": "Shipping Info",
-    "payment": "Payment Info",
-    "paymentMethod": "Payment Method",
-    "paymentTime": "Payment Time",
-    "transactionId": "Transaction ID",
-    "priceDetail": "Price Details",
-    "orderInfo": "Order Info",
-    "createdAt": "Created",
-    "updatedAt": "Updated",
-    "actions": {
-      "payNow": "Pay Now",
-      "cancel": "Cancel Order",
-      "confirmReceive": "Confirm Receipt",
-      "tracking": "Track Package",
-      "buyAgain": "Buy Again",
-      "afterSales": "After-Sales"
-    }
+    "title": "Order Details", "share": "Share Order",
+    "timeline": { "created": "Order Placed", "paid": "Paid", "shipped": "Shipped", "delivered": "Delivered" },
+    "items": "Order Items", "shipping": "Shipping Info", "payment": "Payment Info",
+    "paymentMethod": "Payment Method", "paymentTime": "Payment Time", "transactionId": "Transaction ID",
+    "priceDetail": "Price Details", "orderInfo": "Order Info", "createdAt": "Created", "updatedAt": "Updated", "total": "Total",
+    "actions": { "payNow": "Pay Now", "cancel": "Cancel Order", "confirmReceive": "Confirm Receipt", "tracking": "Track", "buyAgain": "Buy Again", "afterSales": "After-Sales" }
   },
   "auth": {
+    "brandName": "Dopamine",
     "login": {
-      "title": "Sign In",
-      "email": "Email",
-      "emailPlaceholder": "email@example.com",
-      "password": "Password",
-      "forgotPassword": "Forgot password?",
-      "submit": "Sign In",
-      "loading": "Signing in...",
-      "divider": "or",
-      "google": "Continue with Google",
-      "github": "Continue with GitHub",
-      "noAccount": "Don't have an account? Sign up",
-      "error": "Invalid email or password"
+      "title": "Sign In", "email": "Email", "emailPlaceholder": "email@example.com", "password": "Password",
+      "forgotPassword": "Forgot password?", "submit": "Sign In", "loading": "Signing in...", "divider": "or",
+      "google": "Continue with Google", "github": "Continue with GitHub", "noAccount": "No account? Sign up", "error": "Invalid email or password"
     },
     "register": {
-      "title": "Sign Up",
-      "name": "Name",
-      "namePlaceholder": "Your name",
-      "email": "Email",
-      "emailPlaceholder": "email@example.com",
-      "password": "Password",
-      "submit": "Sign Up",
-      "loading": "Creating account...",
-      "hasAccount": "Already have an account? Sign in",
-      "welcome": "Welcome to DOPA·LUX!",
-      "startExplore": "Start Exploring"
+      "title": "Sign Up", "name": "Name", "namePlaceholder": "Your name", "email": "Email", "emailPlaceholder": "email@example.com",
+      "password": "Password", "submit": "Sign Up", "loading": "Creating...",
+      "hasAccount": "Have an account? Sign in", "welcome": "Welcome to DOPA!", "startExplore": "Start Exploring"
     }
   },
   "profile": {
     "title": "My Profile",
-    "dopaminePoints": "Dopamine Points",
-    "purchased": "{count} Purchased",
-    "favorites": "My Favorites",
-    "viewAll": "View All",
-    "menu": {
-      "orders": "My Orders",
-      "addresses": "Shipping Addresses",
-      "favorites": "My Favorites",
-      "payment": "Payment Methods",
-      "settings": "Settings",
-      "help": "Help & Feedback",
-      "language": "Language",
-      "logout": "Sign Out"
-    }
+    "unlockVip": "Unlock DOPA VIP", "unlockVipDesc": "2x points, unlimited sim orders, exclusive skins",
+    "vipMember": "VIP Member", "vipActive": "2x points active · Expires Dec 2026", "manage": "Manage",
+    "dopaminePoints": "Dopamine Points", "purchased": "{count} Purchased",
+    "favorites": "My Favorites", "viewAll": "View All",
+    "menu": { "orders": "My Orders", "addresses": "Addresses", "favorites": "Favorites", "payment": "Payment", "settings": "Settings", "help": "Help", "language": "Language", "logout": "Sign Out" }
   },
-  "share": {
-    "title": "Pretend Shopping Score",
-    "scanToVisit": "Scan to visit",
-    "openApp": "Open DOPA·LUX"
-  },
+  "share": { "title": "Pretend Shopping Score", "scanToVisit": "Scan to visit", "openApp": "Open DOPA" },
   "admin": {
-    "sidebar": {
-      "title": "Admin Panel",
-      "products": "Products",
-      "orders": "Orders",
-      "users": "Users",
-      "analytics": "Analytics",
-      "settings": "Settings",
-      "backToSite": "Back to Site"
-    },
-    "products": {
-      "title": "Product Management",
-      "add": "Add Product",
-      "search": "Search products...",
-      "columns": {
-        "id": "ID",
-        "product": "Product",
-        "category": "Category",
-        "price": "Price",
-        "stock": "Stock",
-        "status": "Status",
-        "actions": "Actions"
-      },
-      "emptyTitle": "No products yet",
-      "emptyDesc": "Click \"Add Product\" to get started"
-    },
-    "orders": {
-      "title": "Order Management",
-      "columns": {
-        "orderNumber": "Order #",
-        "user": "User",
-        "amount": "Amount",
-        "status": "Status",
-        "time": "Time",
-        "actions": "Actions"
-      }
-    }
+    "sidebar": { "title": "Admin", "products": "Products", "orders": "Orders", "users": "Users", "analytics": "Analytics", "settings": "Settings", "backToSite": "Back to Site" },
+    "products": { "title": "Products", "add": "Add Product", "search": "Search...", "columns": { "id": "ID", "product": "Product", "category": "Category", "price": "Price", "stock": "Stock", "status": "Status", "actions": "Actions" }, "emptyTitle": "No products yet", "emptyDesc": "Click Add Product to start" },
+    "orders": { "title": "Orders", "columns": { "orderNumber": "Order #", "user": "User", "amount": "Amount", "status": "Status", "time": "Time", "actions": "Actions" } }
   },
   "category": {
-    "all": "All",
-    "sort": {
-      "default": "Default",
-      "priceAsc": "Price: Low to High",
-      "priceDesc": "Price: High to Low",
-      "newest": "Newest"
-    },
-    "filter": "Filter",
-    "priceRange": "Price Range",
-    "emptyTitle": "No products in this category",
-    "emptyDesc": "Check out other categories?",
-    "emptyAction": "Browse All"
+    "all": "All", "sort": { "default": "Default", "priceAsc": "Low to High", "priceDesc": "High to Low", "newest": "Newest" },
+    "filter": "Filter", "priceRange": "Price Range",
+    "emptyTitle": "No products here", "emptyDesc": "Check other categories?", "emptyAction": "Browse All"
   },
-  "footer": {
-    "tagline": "Your Dopamine Luxury Space",
-    "copyright": "© 2026 DOPA·LUX. All rights reserved."
-  },
-  "common": {
-    "loading": "Loading...",
-    "error": "Something went wrong",
-    "retry": "Retry",
-    "close": "Close",
-    "confirm": "Confirm",
-    "cancel": "Cancel",
-    "save": "Save",
-    "delete": "Delete",
-    "edit": "Edit"
-  },
-  "language": {
-    "switch": "Switch Language",
-    "zh": "中文",
-    "en": "English"
-  },
+  "footer": { "tagline": "Your Dopamine Luxury Space", "copyright": "© 2026 DOPA·LUX. All rights reserved." },
+  "common": { "loading": "Loading...", "error": "Error", "retry": "Retry", "close": "Close", "confirm": "Confirm", "cancel": "Cancel", "save": "Save", "delete": "Delete", "edit": "Edit", "onlyLeft": "Only {count} left", "viewing": "{count} viewing" },
+  "language": { "switch": "Switch Language", "zh": "中文", "en": "English" },
   "vip": {
-    "title": "DOPA VIP",
-    "subtitle": "Unlock unlimited dopamine experiences",
-    "monthly": "Monthly",
-    "monthlyPrice": "$2.99",
-    "yearly": "Yearly",
-    "yearlyPrice": "$29.9",
-    "savePercent": "Save 17%",
-    "perMonth": "mo",
-    "popular": "Most Popular",
-    "subscribe": "Subscribe Now",
-    "benefitsTitle": "VIP Exclusive Benefits",
-    "benefitUnlimited": "Unlimited Sim Orders",
-    "benefit2x": "2x Points on Everything",
-    "benefitSkins": "VIP Exclusive Skins",
-    "benefitGlimmer": "Exclusive Coral Glimmer Trail",
-    "benefitBadge": "VIP Crown Badge"
+    "title": "DOPA VIP", "subtitle": "Unlock unlimited dopamine", "monthly": "Monthly", "monthlyPrice": "$2.99", "yearly": "Yearly", "yearlyPrice": "$29.9",
+    "savePercent": "Save 17%", "perMonth": "mo", "popular": "Most Popular", "subscribe": "Subscribe",
+    "benefitsTitle": "VIP Benefits", "benefitUnlimited": "Unlimited Sim Orders", "benefit2x": "2x Points", "benefitSkins": "Exclusive Skins", "benefitGlimmer": "Coral Glimmer Trail", "benefitBadge": "VIP Crown Badge"
   },
   "coins": {
-    "title": "DOPA Coins",
-    "subtitle": "Purchase coins to unlock premium sim experiences",
-    "balance": "Balance",
-    "unit": "coins",
-    "bonus": "bonus",
-    "buy": "Buy",
-    "popular": "Popular",
-    "useTitle": "What can coins do?",
-    "useSim": "Unlock rare limited virtual items",
-    "useSkin": "Buy exclusive skins & themes",
-    "useGift": "Send dopamine surprises to friends",
-    "packages": {
-      "smallPrice": "$0.99",
-      "mediumPrice": "$4.99",
-      "largePrice": "$14.99",
-      "megaPrice": "$29.99"
-    }
+    "title": "DOPA Coins", "subtitle": "Purchase coins for premium experiences",
+    "balance": "Balance", "unit": "coins", "bonus": "bonus", "buy": "Buy", "popular": "Popular",
+    "useTitle": "What can coins do?", "useSim": "Unlock rare virtual items", "useSkin": "Buy exclusive skins", "useGift": "Send dopamine gifts",
+    "packages": { "smallPrice": "$0.99", "mediumPrice": "$4.99", "largePrice": "$14.99", "megaPrice": "$29.99" }
   },
   "skins": {
-    "title": "Skin Store",
-    "subtitle": "Customize your dopamine space",
-    "limited": "Limited",
-    "permanent": "Permanent",
-    "buy": "Buy",
-    "jacquemus": {
-      "name": "Jacquemus Sunlit"
-    },
-    "offwhite": {
-      "name": "Off-White Industrial"
-    },
-    "gm": {
-      "name": "Gentle Monster Surreal"
-    },
-    "spring": {
-      "name": "Spring Blossom"
-    }
+    "title": "Skin Store", "subtitle": "Customize your space", "limited": "Limited", "permanent": "Permanent", "buy": "Buy",
+    "jacquemus": { "name": "Jacquemus Sunlit" }, "offwhite": { "name": "Off-White Industrial" },
+    "gm": { "name": "Gentle Monster Surreal" }, "spring": { "name": "Spring Blossom" }
   },
   "leaderboard": {
-    "title": "Dopamine Leaderboard",
-    "subtitle": "See who's the dopamine king today",
-    "myRank": "My Rank",
-    "level": "Level",
-    "notRanked": "Not Ranked",
-    "getBoost": "VIP Boost",
-    "titles": {
-      "king": "Dopamine King",
-      "guru": "Fashion Guru",
-      "connoisseur": "Luxury Connoisseur",
-      "hunter": "Trend Hunter"
-    }
+    "title": "Leaderboard", "subtitle": "Who's the dopamine king today?",
+    "myRank": "My Rank", "level": "Level", "notRanked": "Not Ranked", "getBoost": "VIP Boost",
+    "titles": { "king": "Dopamine King", "guru": "Fashion Guru", "connoisseur": "Luxury Connoisseur", "hunter": "Trend Hunter" }
   }
 }

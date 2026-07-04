@@ -36,13 +36,13 @@ export default function HomePage() {
           {/* Brand badge */}
           <div className="animate-fade-up flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-brand/15 bg-brand-subtle">
             <span className="size-1.5 rounded-full bg-brand animate-pulse" />
-            <span className="text-[10px] tracking-[0.3em] uppercase font-semibold text-brand">Dopamine Hub</span>
+            <span className="text-[10px] tracking-[0.3em] uppercase font-semibold text-brand">{t("home.badge")}</span>
           </div>
 
           {/* Main headline */}
           <h1 className="animate-fade-up font-display font-black text-5xl sm:text-6xl lg:text-7xl text-text-0 leading-[0.95] tracking-tight" style={{ animationDelay: "0.1s" }}>
-            Mood is<br />
-            <span className="text-gradient-brand">currency.</span>
+            {t("home.heroLine1")}<br />
+            <span className="text-gradient-brand">{t("home.heroLine2")}</span>
           </h1>
 
           {/* Subtitle */}
@@ -72,8 +72,8 @@ export default function HomePage() {
       <section className="relative px-4 sm:px-8 max-w-7xl mx-auto w-full pb-16">
         <div className="flex items-end justify-between mb-10">
           <div>
-            <span className="text-[10px] tracking-[0.25em] uppercase text-text-3 mb-3 block">Trending</span>
-            <h2 className="text-3xl sm:text-4xl font-display font-black text-text-0 tracking-tight">What they're<br />watching.</h2>
+            <span className="text-[10px] tracking-[0.25em] uppercase text-text-3 mb-3 block">{t("home.trending")}</span>
+            <h2 className="text-3xl sm:text-4xl font-display font-black text-text-0 tracking-tight">{t("home.trendingTitle")}</h2>
           </div>
           <Link href={`/${locale}/channel/luxury/browse/boost`} className="hidden sm:flex items-center gap-1.5 text-sm text-text-2 hover:text-brand transition-colors duration-200">
             View all <ArrowRight className="size-3.5" />
@@ -126,14 +126,14 @@ export default function HomePage() {
         </div>
 
         <div className="mt-8 flex sm:hidden justify-center">
-          <Link href={`/${locale}/channel/luxury/browse/boost`} className="text-sm text-brand hover:underline">View all trending →</Link>
+          <Link href={`/${locale}/channel/luxury/browse/boost`} className="text-sm text-brand hover:underline">{t("home.viewAll")}</Link>
         </div>
       </section>
 
       {/* ── Channels ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 w-full pb-8"><div className="section-divider" /></div>
       <section className="relative px-4 sm:px-8 max-w-7xl mx-auto w-full pb-12">
-        <span className="text-[10px] tracking-[0.25em] uppercase text-text-3 mb-8 block text-center">More Worlds</span>
+        <span className="text-[10px] tracking-[0.25em] uppercase text-text-3 mb-8 block text-center">{t("home.moreWorlds")}</span>
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 stagger">
           {channels.map((ch) => {
             const Icon = iconMap[ch.icon];
@@ -146,8 +146,8 @@ export default function HomePage() {
       <section className="relative px-4 sm:px-8 max-w-7xl mx-auto w-full pb-24">
         <div className="flex items-end justify-between mb-10">
           <div>
-            <span className="text-[10px] tracking-[0.25em] uppercase text-text-3 mb-3 block">New Arrivals</span>
-            <h2 className="text-3xl sm:text-4xl font-display font-black text-text-0 tracking-tight">Just dropped.</h2>
+            <span className="text-[10px] tracking-[0.25em] uppercase text-text-3 mb-3 block">{t("home.newArrivals")}</span>
+            <h2 className="text-3xl sm:text-4xl font-display font-black text-text-0 tracking-tight">{t("home.newArrivalsTitle")}</h2>
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -169,7 +169,7 @@ export default function HomePage() {
                   {p.originalPrice && <span className="text-xs text-text-3 line-through">{p.originalPrice}</span>}
                 </div>
                 {p.stock && p.stock <= 3 && (
-                  <p className="text-[10px] text-alert mt-2">Only {p.stock} left</p>
+                  <p className="text-[10px] text-alert mt-2">只余{p.stock}件</p>
                 )}
               </div>
               {p.badge && <div className="absolute top-3 left-3"><Badge variant={p.badge.variant}>{p.badge.label}</Badge></div>}

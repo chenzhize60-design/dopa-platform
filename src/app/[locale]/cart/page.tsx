@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { Trash2, Minus, Plus, ShoppingBag, ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BrandButton } from "@/components/brand/BrandButton";
 import { useCartStore } from "@/stores/cart";
 
 export default function CartPage() {
+  const t = useTranslations();
   const items = useCartStore((s) => s.items);
   const removeItem = useCartStore((s) => s.removeItem);
   const updateQuantity = useCartStore((s) => s.updateQuantity);
@@ -20,18 +22,18 @@ export default function CartPage() {
 
       <main className="flex-1 max-w-3xl mx-auto px-4 sm:px-6 py-12 w-full">
         <h1 className="text-3xl font-display font-bold text-text-primary mb-8">
-          Shopping Cart
+          {t("cart.title")}
         </h1>
 
         {items.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-text-muted">
             <ShoppingBag className="size-16 mb-4" />
-            <p className="text-lg mb-2">Your cart is empty</p>
+            <p className="text-lg mb-2">{t("cart.emptyTitle")}</p>
             <Link
               href="/"
               className="text-brand hover:text-brand-hover transition-colors duration-150 text-sm"
             >
-              Start Shopping
+              {t("cart.emptyAction")}
             </Link>
           </div>
         ) : (
@@ -107,7 +109,7 @@ export default function CartPage() {
             <div className="mt-8 p-6 rounded-2xl bg-bg-surface border border-border-default">
               <div className="flex items-center justify-between pb-4 border-b border-border-default">
                 <span className="text-text-secondary">
-                  Subtotal ({totalItems} items)
+                  {t("cart.subtotal")} ({totalItems} items)
                 </span>
                 <span className="text-xl font-display font-bold text-text-primary">
                   {totalPrice}
@@ -116,7 +118,7 @@ export default function CartPage() {
               <div className="mt-4 flex justify-end">
                 <Link href="/checkout">
                   <BrandButton variant="coral" size="lg" showGlimmer>
-                    Proceed to Checkout
+                    {t("cart.checkout")}
                     <ArrowRight className="size-4" />
                   </BrandButton>
                 </Link>

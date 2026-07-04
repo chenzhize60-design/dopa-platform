@@ -72,8 +72,8 @@ export default function ProfilePage() {
               <Crown className="size-5 text-joy" />
             </div>
             <div className="flex-1">
-              <p className="text-sm font-medium text-text-primary">Unlock DOPA VIP</p>
-              <p className="text-xs text-text-muted">2x points, unlimited sim orders, exclusive skins</p>
+              <p className="text-sm font-medium text-text-primary">{t("profile.unlockVip")}</p>
+              <p className="text-xs text-text-muted">{t("profile.unlockVipDesc")}</p>
             </div>
             <span className="text-xs font-bold text-joy">¥19.9/mo</span>
           </Link>
@@ -83,7 +83,7 @@ export default function ProfilePage() {
         <div className="grid grid-cols-4 gap-3 mb-8">
           {[
             { label: t("profile.dopaminePoints"), value: points.toLocaleString(), icon: Sparkles, color: "var(--joy)" },
-            { label: "Coins", value: coins.toLocaleString(), icon: Coins, color: "var(--joy)", link: `/${locale}/coins` },
+            { label: t("coins.title"), value: coins.toLocaleString(), icon: Coins, color: "var(--joy)", link: `/${locale}/coins` },
             { label: t("leaderboard.myRank"), value: `#${rank}`, icon: Trophy, color: "var(--brand)", link: `/${locale}/leaderboard` },
             { label: "Orders", value: "12", icon: Package, color: "var(--heal)" },
           ].map((stat) => {
@@ -112,7 +112,7 @@ export default function ProfilePage() {
           <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-bg-surface border border-border-default mb-8">
             <GlimmerDot size={8} color="var(--joy)" mode="breathe" />
             <span className="text-sm text-text-secondary flex-1">
-              VIP Member · 2x points active · Expires Dec 2026
+              {t("profile.vipMember")} · {t("profile.vipActive")}
             </span>
             <Link href={`/${locale}/vip`} className="text-xs text-brand hover:underline">
               Manage
