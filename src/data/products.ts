@@ -9,222 +9,75 @@ export interface Product {
   images: string[];
   category: string;
   mood: "boost" | "heal" | "indulge";
-  badge?: {
-    label: string;
-    variant: "new" | "limited" | "verified" | "hot";
-  };
+  badge?: { label: string; variant: "new" | "limited" | "verified" | "hot" };
   rating: number;
   reviews: number;
+  viewers?: number;
+  stock?: number;
+  tags?: string[];
 }
 
 export const products: Product[] = [
-  {
-    slug: "celine-triomphe-bag",
-    brand: "Celine",
-    name: "Triomphe Shoulder Bag in Shiny Calfskin",
-    price: "¥28,500",
-    description:
-      "Classic Triomphe shoulder bag crafted in shiny calfskin with gold-finish metal clasp. A timeless piece for the modern wardrobe.",
-    story:
-      "Inspired by the Arc de Triomphe chain motif from the 1970s, the Triomphe bag carries the spirit of Parisian elegance. Each piece is hand-stitched by artisans in Florence.",
-    images: [
-      "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=80",
-      "https://images.unsplash.com/photo-1591561954557-26941169b49e?w=800&q=80",
-    ],
-    category: "bags",
-    mood: "boost",
-    badge: { label: "Hot", variant: "hot" },
-    rating: 4.9,
-    reviews: 234,
-  },
-  {
-    slug: "loewe-puzzle-edge",
-    brand: "Loewe",
-    name: "Puzzle Edge Bag in Classic Calfskin",
-    price: "¥23,900",
-    description:
-      "The iconic Puzzle bag reimagined with folded geometric panels. An architectural masterpiece in soft calfskin.",
-    story:
-      "Jonathan Anderson's debut bag for Loewe. The Puzzle can be folded completely flat, inspired by origami. Each bag requires 524 precision cuts and 9 hours of hand assembly.",
-    images: [
-      "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80",
-      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=800&q=80",
-    ],
-    category: "bags",
-    mood: "indulge",
-    badge: { label: "Verified", variant: "verified" },
-    rating: 4.8,
-    reviews: 189,
-  },
-  {
-    slug: "bv-cassette-bag",
-    brand: "Bottega Veneta",
-    name: "Cassette Bag in Intrecciato Leather",
-    price: "¥32,000",
-    originalPrice: "¥38,000",
-    description:
-      "The Cassette bag features the iconic intrecciato weave. Padded leather with a magnetic closure and interior zip pocket.",
-    story:
-      "Bottega Veneta's intrecciato weave was born in the 1960s when the brand's sewing machines were too delicate for thick leather. The artisans invented a weaving technique that became the house's signature.",
-    images: [
-      "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=800&q=80",
-      "https://images.unsplash.com/photo-1575032617751-6ddec2089882?w=800&q=80",
-    ],
-    category: "bags",
-    mood: "indulge",
-    badge: { label: "Limited", variant: "limited" },
-    rating: 4.7,
-    reviews: 156,
-  },
-  {
-    slug: "jacquemus-le-chiquito",
-    brand: "Jacquemus",
-    name: "Le Chiquito Mini Leather Bag",
-    price: "¥5,800",
-    description:
-      "The cult-favorite mini bag. Surprisingly spacious for its size. A playful addition to any look.",
-    story:
-      "Simon Porte Jacquemus designed Le Chiquito as a joke — a bag so small it could barely hold anything. It became a viral sensation and redefined the mini bag trend.",
-    images: [
-      "https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?w=800&q=80",
-      "https://images.unsplash.com/photo-1601924638867-3a6de6b7a500?w=800&q=80",
-    ],
-    category: "bags",
-    mood: "boost",
-    badge: { label: "New", variant: "new" },
-    rating: 4.6,
-    reviews: 312,
-  },
-  {
-    slug: "hermes-avalon-blanket",
-    brand: "Hermes",
-    name: "Avalon III Throw Blanket in Cashmere",
-    price: "¥12,800",
-    description:
-      "Luxurious cashmere throw blanket with contrast saddle-stitched hem. The ultimate home comfort piece.",
-    story:
-      "Named after the mythical island paradise, the Avalon blanket wraps you in the warmth of Hermes' finest cashmere. Each blanket passes through 18 quality checks before leaving the atelier.",
-    images: [
-      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80",
-      "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=800&q=80",
-    ],
-    category: "home",
-    mood: "heal",
-    badge: { label: "Verified", variant: "verified" },
-    rating: 5.0,
-    reviews: 89,
-  },
-  {
-    slug: "diptyque-roses-candle",
-    brand: "Diptyque",
-    name: "Roses Scented Candle 190g",
-    price: "¥560",
-    description:
-      "A bouquet of freshly picked roses captured in wax. The scent of a blooming garden in Paris.",
-    story:
-      "Founded in 1961 at 34 Boulevard Saint-Germain, Diptyque started as a boutique for fabric and wallpaper designs. The founders' passion for travel and art led them to create the world's most beloved candles.",
-    images: [
-      "https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=800&q=80",
-      "https://images.unsplash.com/photo-1600612253971-422e7f7faeb6?w=800&q=80",
-    ],
-    category: "home",
-    mood: "heal",
-    badge: { label: "Hot", variant: "hot" },
-    rating: 4.8,
-    reviews: 456,
-  },
-  {
-    slug: "cartier-tank-watch",
-    brand: "Cartier",
-    name: "Tank Must Watch, Small Model",
-    price: "¥24,500",
-    description:
-      "The iconic Tank watch with a quartz movement. Clean lines inspired by the Renault tank of WWI.",
-    story:
-      "Louis Cartier designed the Tank in 1917, inspired by the aerial view of a Renault tank. The parallel brancards became the defining feature of a design that has remained virtually unchanged for over 100 years.",
-    images: [
-      "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800&q=80",
-      "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=800&q=80",
-    ],
-    category: "watches",
-    mood: "boost",
-    badge: { label: "Verified", variant: "verified" },
-    rating: 4.9,
-    reviews: 178,
-  },
-  {
-    slug: "byredo-gypsy-water",
-    brand: "Byredo",
-    name: "Gypsy Water Eau de Parfum 50ml",
-    price: "¥1,450",
-    description:
-      "A woody aromatic fragrance evoking the romance of the nomadic lifestyle. Bergamot, juniper berries, and sandalwood.",
-    story:
-      "Ben Gorham founded Byredo in Stockholm in 2006 with a vision to translate memories and emotions into scent. Gypsy Water captures the scent of fresh soil, deep forests, and campfires under a starry sky.",
-    images: [
-      "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80",
-      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&q=80",
-    ],
-    category: "fragrance",
-    mood: "heal",
-    badge: { label: "New", variant: "new" },
-    rating: 4.7,
-    reviews: 523,
-  },
+  // ── BAGS ──
+  { slug: "celine-triomphe-bag", brand: "Celine", name: "Triomphe Shoulder Bag in Shiny Calfskin", price: "¥28,500", description: "Classic Triomphe shoulder bag crafted in shiny calfskin with gold-finish metal clasp.", story: "Inspired by the Arc de Triomphe chain motif from the 1970s, the Triomphe bag carries the spirit of Parisian elegance.", images: ["https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=80", "https://images.unsplash.com/photo-1591561954557-26941169b49e?w=800&q=80"], category: "bags", mood: "boost", badge: { label: "Hot", variant: "hot" }, rating: 4.9, reviews: 234, viewers: 48, stock: 3, tags: ["classic", "parisian"] },
+  { slug: "loewe-puzzle-edge", brand: "Loewe", name: "Puzzle Edge Bag in Classic Calfskin", price: "¥23,900", description: "The iconic Puzzle bag reimagined with folded geometric panels. An architectural masterpiece.", story: "Jonathan Anderson's debut bag for Loewe. Each bag requires 524 precision cuts and 9 hours of assembly.", images: ["https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80", "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=800&q=80"], category: "bags", mood: "indulge", badge: { label: "Verified", variant: "verified" }, rating: 4.8, reviews: 189, viewers: 32, stock: 5, tags: ["architectural", "iconic"] },
+  { slug: "bv-cassette-bag", brand: "Bottega Veneta", name: "Cassette Bag in Intrecciato Leather", price: "¥32,000", originalPrice: "¥38,000", description: "The Cassette bag features the iconic intrecciato weave with padded leather.", story: "Bottega's intrecciato weave was born when sewing machines couldn't handle thick leather. Artisans invented a weaving technique.", images: ["https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=800&q=80", "https://images.unsplash.com/photo-1575032617751-6ddec2089882?w=800&q=80"], category: "bags", mood: "indulge", badge: { label: "Limited", variant: "limited" }, rating: 4.7, reviews: 156, viewers: 67, stock: 1, tags: ["woven", "italian"] },
+  { slug: "jacquemus-le-chiquito", brand: "Jacquemus", name: "Le Chiquito Mini Leather Bag", price: "¥5,800", description: "The cult-favorite mini bag. Surprisingly spacious. A playful statement piece.", story: "Simon designed Le Chiquito as a joke — a bag so small it could barely hold anything. It went viral.", images: ["https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?w=800&q=80", "https://images.unsplash.com/photo-1601924638867-3a6de6b7a500?w=800&q=80"], category: "bags", mood: "boost", badge: { label: "New", variant: "new" }, rating: 4.6, reviews: 312, viewers: 89, stock: 8, tags: ["mini", "playful"] },
+  { slug: "dior-saddle-bag", brand: "Dior", name: "Saddle Bag in Blue Oblique Jacquard", price: "¥31,000", description: "The iconic Saddle bag reimagined by Maria Grazia Chiuri in the signature Dior Oblique motif.", story: "John Galliano introduced the Saddle bag in 1999. Two decades later, Maria Grazia Chiuri revived it for a new generation of Dior lovers.", images: ["https://images.unsplash.com/photo-1598532163257-ae3c6b2524b6?w=800&q=80", "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=800&q=80"], category: "bags", mood: "boost", badge: { label: "Hot", variant: "hot" }, rating: 4.9, reviews: 478, viewers: 112, stock: 2, tags: ["iconic", "y2k"] },
+  { slug: "chanel-flap-bag", brand: "Chanel", name: "Classic Flap Bag in Lambskin", price: "¥78,000", description: "The timeless Classic Flap in quilted lambskin with gold-tone hardware. The ultimate investment piece.", story: "Coco Chanel designed the first flap bag in 1955, adding the shoulder strap — revolutionary for women who needed their hands free.", images: ["https://images.unsplash.com/photo-1575032617751-6ddec2089882?w=800&q=80", "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800&q=80"], category: "bags", mood: "indulge", badge: { label: "Verified", variant: "verified" }, rating: 5.0, reviews: 892, viewers: 156, stock: 1, tags: ["investment", "timeless"] },
+
+  // ── WATCHES ──
+  { slug: "cartier-tank-watch", brand: "Cartier", name: "Tank Must Watch, Small Model", price: "¥24,500", description: "The iconic Tank watch with quartz movement. Clean lines inspired by the Renault tank of WWI.", story: "Louis Cartier designed the Tank in 1917, inspired by an aerial view of a Renault tank. Unchanged for over 100 years.", images: ["https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800&q=80", "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=800&q=80"], category: "watches", mood: "boost", badge: { label: "Verified", variant: "verified" }, rating: 4.9, reviews: 178, viewers: 45, stock: 4, tags: ["iconic", "parisian"] },
+  { slug: "rolex-submariner", brand: "Rolex", name: "Submariner Date in Oystersteel", price: "¥89,500", description: "The legendary diver's watch. 300m water resistance, unidirectional bezel, and Chromalight display.", story: "First launched in 1953, the Submariner was the first wristwatch water-resistant to 100 meters. It's been on the wrist of explorers and icons ever since.", images: ["https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=800&q=80", "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800&q=80"], category: "watches", mood: "boost", badge: { label: "Limited", variant: "limited" }, rating: 5.0, reviews: 1203, viewers: 234, stock: 0, tags: ["legendary", "sport"] },
+  { slug: "omega-speedmaster", brand: "Omega", name: "Speedmaster Moonwatch Professional", price: "¥52,000", description: "The first watch worn on the moon. Manual-winding chronograph with hesalite crystal.", story: "On July 21, 1969, Buzz Aldrin stepped onto the lunar surface wearing his Omega Speedmaster. It's been the official watch of NASA since 1965.", images: ["https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800&q=80", "https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=800&q=80"], category: "watches", mood: "indulge", badge: { label: "Verified", variant: "verified" }, rating: 4.9, reviews: 567, viewers: 89, stock: 3, tags: ["moon", "nasa"] },
+  { slug: "jaeger-reverso", brand: "Jaeger-LeCoultre", name: "Reverso Classic Small Seconds", price: "¥68,000", description: "The watch that flips. Art Deco elegance with a reversible case originally designed for polo players.", story: "In 1931, British polo players in India challenged Jaeger-LeCoultre to create a watch that could survive a match. The reversible Reverso was born.", images: ["https://images.unsplash.com/photo-1547996160-81dfa63595aa?w=800&q=80", "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=800&q=80"], category: "watches", mood: "heal", badge: { label: "New", variant: "new" }, rating: 4.8, reviews: 234, viewers: 23, stock: 2, tags: ["artdeco", "ingenious"] },
+
+  // ── SHOES ──
+  { slug: "christian-louboutin-pigalle", brand: "Christian Louboutin", name: "Pigalle Follies 100mm in Patent Leather", price: "¥7,200", description: "The iconic red-soled pump. 100mm heel in glossy patent leather. Pure Parisian seduction.", story: "Christian Louboutin painted the sole of a prototype with his assistant's red nail polish in 1992. The red sole became the most recognizable signature in footwear.", images: ["https://images.unsplash.com/photo-1543163521-1bf539c16dd2?w=800&q=80", "https://images.unsplash.com/photo-1560343090-f0409e92791a?w=800&q=80"], category: "shoes", mood: "boost", badge: { label: "Hot", variant: "hot" }, rating: 4.7, reviews: 345, viewers: 56, stock: 6, tags: ["iconic", "seductive"] },
+  { slug: "gucci-ace-sneaker", brand: "Gucci", name: "Ace Embroidered Leather Sneaker", price: "¥6,500", description: "The cult Ace sneaker with Gucci's signature bee embroidery. A street style essential.", story: "Alessandro Michele transformed the humble tennis shoe into a canvas for Gucci's maximalist vision. Each embroidery takes 7 hours of handwork.", images: ["https://images.unsplash.com/photo-1560343090-f0409e92791a?w=800&q=80", "https://images.unsplash.com/photo-1543163521-1bf539c16dd2?w=800&q=80"], category: "shoes", mood: "indulge", badge: { label: "Hot", variant: "hot" }, rating: 4.6, reviews: 678, viewers: 78, stock: 10, tags: ["streetwear", "embroidery"] },
+  { slug: "balenciaga-triple-s", brand: "Balenciaga", name: "Triple S Clear Sole Sneaker", price: "¥8,200", description: "The chunky sneaker that started the dad shoe revolution. Triple-stacked sole with mesh and leather.", story: "Demna Gvasalia launched the Triple S in 2017, creating the 'ugly sneaker' movement. Three soles stacked — running, basketball, and track.", images: ["https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=800&q=80", "https://images.unsplash.com/photo-1560343090-f0409e92791a?w=800&q=80"], category: "shoes", mood: "boost", badge: { label: "Limited", variant: "limited" }, rating: 4.5, reviews: 890, viewers: 98, stock: 4, tags: ["chunky", "street"] },
+  { slug: "aquazzura-powder-pump", brand: "Aquazzura", name: "Powder Puff 105 Sandal in Satin", price: "¥5,600", description: "Delicate satin sandal with an adjustable ankle wrap. Made for golden hour.", story: "Edgardo Osorio founded Aquazzura in Florence, blending Italian craftsmanship with a modern, sensual aesthetic.", images: ["https://images.unsplash.com/photo-1543163521-1bf539c16dd2?w=800&q=80", "https://images.unsplash.com/photo-1560343090-f0409e92791a?w=800&q=80"], category: "shoes", mood: "heal", badge: { label: "New", variant: "new" }, rating: 4.8, reviews: 123, viewers: 34, stock: 7, tags: ["elegant", "golden-hour"] },
+
+  // ── JEWELRY ──
+  { slug: "tiffany-hardwear", brand: "Tiffany & Co.", name: "HardWear Link Bracelet in 18k Gold", price: "¥38,500", description: "Industrial-chic chain link bracelet inspired by the grit of New York City.", story: "Tiffany HardWear captures the spirit of New York — bold, unapologetic, and built to last. Each link is hand-polished to a mirror finish.", images: ["https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=800&q=80", "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80"], category: "jewelry", mood: "boost", badge: { label: "Hot", variant: "hot" }, rating: 4.9, reviews: 167, viewers: 43, stock: 2, tags: ["nyc", "bold"] },
+  { slug: "bvg-silver-necklace", brand: "Bottega Veneta", name: "Drop Pendant Necklace in Sterling Silver", price: "¥4,800", description: "Minimal drop pendant with Bottega's signature matte silver finish. Quiet luxury at its finest.", story: "Bottega's jewelry line follows the philosophy of 'stealth wealth' — recognizable only to those who know.", images: ["https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80", "https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=800&q=80"], category: "jewelry", mood: "heal", badge: { label: "New", variant: "new" }, rating: 4.7, reviews: 89, viewers: 21, stock: 5, tags: ["minimal", "quiet-luxury"] },
+  { slug: "cartier-love-ring", brand: "Cartier", name: "Love Ring in 18k White Gold", price: "¥16,800", description: "The iconic Love ring. A symbol of eternal commitment, originally designed to be screwed on.", story: "Aldo Cipullo designed the Love bracelet in 1969, inspired by chastity belts. The ring continues the intimate, locking tradition.", images: ["https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=800&q=80", "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=800&q=80"], category: "jewelry", mood: "indulge", badge: { label: "Verified", variant: "verified" }, rating: 5.0, reviews: 445, viewers: 67, stock: 3, tags: ["iconic", "eternal"] },
+
+  // ── FRAGRANCE ──
+  { slug: "byredo-gypsy-water", brand: "Byredo", name: "Gypsy Water Eau de Parfum 50ml", price: "¥1,450", description: "A woody aromatic fragrance evoking the romance of nomadic life. Bergamot, juniper, and sandalwood.", story: "Ben Gorham founded Byredo to translate memories into scent. Gypsy Water captures fresh soil, deep forests, and campfires.", images: ["https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80", "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&q=80"], category: "fragrance", mood: "heal", badge: { label: "New", variant: "new" }, rating: 4.7, reviews: 523, viewers: 56, stock: 12, tags: ["woody", "free-spirit"] },
+  { slug: "le-labo-santal", brand: "Le Labo", name: "Santal 33 Eau de Parfum 100ml", price: "¥2,380", description: "The cult scent of New York. Cardamom, iris, violet, and sandalwood. Smells like a cowboy on a leather saddle.", story: "Le Labo compounds each bottle fresh when you order. Your name is printed on the label. No two bottles smell exactly the same after aging.", images: ["https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&q=80", "https://images.unsplash.com/photo-1541643600914-78b084683601?w=800&q=80"], category: "fragrance", mood: "indulge", badge: { label: "Hot", variant: "hot" }, rating: 4.8, reviews: 891, viewers: 123, stock: 8, tags: ["cult", "handmade"] },
+  { slug: "jo-malone-peony", brand: "Jo Malone London", name: "Peony & Blush Suede Cologne 100ml", price: "¥1,280", description: "Delicate peony blooms wrapped in the sensuality of blush suede. A feminine classic.", story: "Jo Malone's philosophy: layer scents to create your own signature. This one blooms beautifully with Wood Sage & Sea Salt.", images: ["https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=800&q=80", "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=800&q=80"], category: "fragrance", mood: "heal", badge: { label: "Verified", variant: "verified" }, rating: 4.6, reviews: 678, viewers: 45, stock: 15, tags: ["feminine", "layering"] },
+
+  // ── ACCESSORIES ──
+  { slug: "hermes-scarf-brides", brand: "Hermes", name: "Brides de Gala Silk Scarf 90cm", price: "¥4,200", description: "The legendary Hermes scarf. Hand-rolled edges, 100% silk twill. A masterpiece you wear.", story: "The first Hermes scarf was created in 1937. Each design takes 2 years and 750 hours to engrave the screens. 300 cocoons produce one 90cm scarf.", images: ["https://images.unsplash.com/photo-1608236415053-73eee15c87cf?w=800&q=80", "https://images.unsplash.com/photo-1479064555552-3ef4979f8908?w=800&q=80"], category: "accessories", mood: "indulge", badge: { label: "Verified", variant: "verified" }, rating: 4.9, reviews: 234, viewers: 34, stock: 4, tags: ["silk", "artisanal"] },
+  { slug: "gentle-monster-rococo", brand: "Gentle Monster", name: "Rococo 01 Sunglasses", price: "¥2,580", description: "Bold acetate sunglasses with gradient lenses. Seoul's coolest export.", story: "Gentle Monster doesn't sell eyewear — they sell identity. Each store is an art installation. Each frame is a conversation starter.", images: ["https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&q=80", "https://images.unsplash.com/photo-1508296695146-257a814070b4?w=800&q=80"], category: "accessories", mood: "boost", badge: { label: "Hot", variant: "hot" }, rating: 4.7, reviews: 456, viewers: 78, stock: 9, tags: ["korean", "bold"] },
+  { slug: "acne-studios-scarf", brand: "Acne Studios", name: "Canada Scarf in Checked Wool", price: "¥1,800", description: "Oversized wool scarf in Acne's signature check pattern. Wraps you in Scandinavian cool.", story: "Jonny Johansson founded Acne Studios in Stockholm. The brand name stands for 'Ambition to Create Novel Expressions.'", images: ["https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=800&q=80", "https://images.unsplash.com/photo-1608236415053-73eee15c87cf?w=800&q=80"], category: "accessories", mood: "heal", badge: { label: "New", variant: "new" }, rating: 4.5, reviews: 234, viewers: 23, stock: 11, tags: ["scandi", "cozy"] },
+
+  // ── HOME ──
+  { slug: "hermes-avalon-blanket", brand: "Hermes", name: "Avalon III Throw Blanket in Cashmere", price: "¥12,800", description: "Luxurious cashmere throw with contrast saddle-stitched hem. The ultimate home comfort.", story: "Named after the mythical island paradise, the Avalon blanket wraps you in Hermes' finest cashmere. 18 quality checks before leaving the atelier.", images: ["https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80", "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?w=800&q=80"], category: "home", mood: "heal", badge: { label: "Verified", variant: "verified" }, rating: 5.0, reviews: 89, viewers: 28, stock: 2, tags: ["cashmere", "cozy"] },
+  { slug: "diptyque-roses-candle", brand: "Diptyque", name: "Roses Scented Candle 190g", price: "¥560", description: "A bouquet of freshly picked roses captured in wax. The scent of a blooming Parisian garden.", story: "Founded at 34 Boulevard Saint-Germain, Diptyque started as a fabric boutique. The founders' passion for travel led to the world's most beloved candles.", images: ["https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=800&q=80", "https://images.unsplash.com/photo-1600612253971-422e7f7faeb6?w=800&q=80"], category: "home", mood: "heal", badge: { label: "Hot", variant: "hot" }, rating: 4.8, reviews: 456, viewers: 89, stock: 20, tags: ["parisian", "cozy"] },
 ];
 
 export const moods = [
-  {
-    id: "boost",
-    label: "Boost",
-    description: "Energize your presence with bold statement pieces",
-    color: "var(--brand)",
-    borderColor: "rgba(255,59,92,0.2)",
-    glowColor: "rgba(255,59,92,0.15)",
-    bgMuted: "rgba(255,59,92,0.08)",
-    icon: "Zap",
-  },
-  {
-    id: "heal",
-    label: "Heal",
-    description: "Find comfort in soft textures and calming scents",
-    color: "var(--heal)",
-    borderColor: "rgba(0,212,200,0.2)",
-    glowColor: "rgba(0,212,200,0.15)",
-    bgMuted: "rgba(0,212,200,0.08)",
-    icon: "Heart",
-  },
-  {
-    id: "indulge",
-    label: "Indulge",
-    description: "Treat yourself to the extraordinary",
-    color: "var(--joy)",
-    borderColor: "rgba(255,214,10,0.2)",
-    glowColor: "rgba(255,214,10,0.15)",
-    bgMuted: "rgba(255,214,10,0.08)",
-    icon: "Crown",
-  },
+  { id: "boost", label: "Boost", description: "Energize your presence with bold statement pieces", color: "var(--brand)", borderColor: "rgba(255,59,92,0.2)", glowColor: "rgba(255,59,92,0.15)", bgMuted: "rgba(255,59,92,0.08)", icon: "Zap" },
+  { id: "heal", label: "Heal", description: "Find comfort in soft textures and calming scents", color: "var(--heal)", borderColor: "rgba(0,212,200,0.2)", glowColor: "rgba(0,212,200,0.15)", bgMuted: "rgba(0,212,200,0.08)", icon: "Heart" },
+  { id: "indulge", label: "Indulge", description: "Treat yourself to the extraordinary", color: "var(--joy)", borderColor: "rgba(255,214,10,0.2)", glowColor: "rgba(255,214,10,0.15)", bgMuted: "rgba(255,214,10,0.08)", icon: "Crown" },
 ];
 
-export const categories = [
-  "bags",
-  "watches",
-  "fragrance",
-  "home",
-  "accessories",
-  "shoes",
-  "jewelry",
+export const categories = ["bags", "watches", "shoes", "jewelry", "fragrance", "accessories", "home"];
+
+export const collections = [
+  { id: "trending", label: "Trending Now", tag: "hot" },
+  { id: "new-arrivals", label: "Just Dropped", tag: "new" },
+  { id: "investment", label: "Investment Pieces", tag: "investment" },
+  { id: "under-10k", label: "Under ¥10,000", tag: "accessible" },
 ];
 
-export function getProductsByMood(mood: string): Product[] {
-  return products.filter((p) => p.mood === mood);
-}
-
-export function getProductBySlug(slug: string): Product | undefined {
-  return products.find((p) => p.slug === slug);
-}
-
+export function getProductsByMood(mood: string): Product[] { return products.filter((p) => p.mood === mood); }
+export function getProductBySlug(slug: string): Product | undefined { return products.find((p) => p.slug === slug); }
 export function getProductsByCategory(category: string): Product[] {
   if (category === "all") return products;
   return products.filter((p) => p.category === category);
 }
+export function getFeaturedProducts(): Product[] { return products.filter((p) => p.badge?.variant === "hot" || p.badge?.variant === "new").slice(0, 6); }
+export function getTrendingProducts(): Product[] { return products.filter((p) => p.viewers && p.viewers > 50).sort((a, b) => (b.viewers || 0) - (a.viewers || 0)).slice(0, 6); }
