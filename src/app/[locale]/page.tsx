@@ -11,6 +11,8 @@ import { ChannelCard } from "@/components/channel/ChannelCard";
 import { Badge } from "@/components/brand/Badge";
 import { channels, iconMap } from "@/data/channels";
 import { getTrendingProducts, getFeaturedProducts } from "@/data/products";
+import { foodItems } from "@/data/channel/food";
+import { liveItems, getHotLive } from "@/data/channel/live";
 
 const moodDefs = [
   { key: "boost", icon: Zap, labelKey: "moods.boost.label", descKey: "moods.boost.description", color: "var(--brand)", borderColor: "rgba(255,59,92,0.12)", glowColor: "rgba(255,59,92,0.1)", bgMuted: "rgba(255,59,92,0.04)" },
@@ -23,6 +25,8 @@ export default function HomePage() {
   const locale = useLocale();
   const trending = getTrendingProducts();
   const featured = getFeaturedProducts();
+  const hotFood = foodItems.filter((f) => f.viewers && f.viewers > 80).slice(0, 4);
+  const hotLive = getHotLive().slice(0, 3);
 
   return (
     <div className="min-h-screen flex flex-col page-enter">
@@ -173,6 +177,68 @@ export default function HomePage() {
                 )}
               </div>
               {p.badge && <div className="absolute top-3 left-3"><Badge variant={p.badge.variant}>{p.badge.label}</Badge></div>}
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Food Channel Preview ── */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 w-full pb-4"><div className="section-divider" /></div>
+      <section className="px-4 sm:px-8 max-w-7xl mx-auto w-full pb-12">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <span className="text-[10px] tracking-[0.25em] uppercase text-text-3 mb-2 block">🍔 {t("channels.food.name")}</span>
+            <h2 className="text-2xl font-display font-bold text-text-0">假装点米其林</h2>
+          </div>
+          <Link href={`/${locale}/channel/food`} className="text-sm text-heal hover:underline">{t("home.viewAll")}</Link>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {hotFood.map((f, i) => (
+            <Link key={f.slug} href={`/${locale}/channel/food`} className="card-luxury group relative rounded-2xl overflow-hidden bg-bg-secondary border border-border-subtle"
+              style={{ animation: "fade-up 0.4s var(--ease-out-expo) both", animationDelay: `${i * 0.06}s` }}>
+              <div className="aspect-square overflow-hidden">
+                <img src={f.image} alt={f.name} className="size-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-bg-secondary via-bg-secondary/90 to-transparent">
+                <span className="text-[10px] text-text-2">{f.restaurant}</span>
+                <p className="text-xs font-medium text-text-0 line-clamp-1">{f.name}</p>
+                <span className="text-xs font-display font-bold text-text-0">{f.price}</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Live Channel Preview ── */}
+      <section className="px-4 sm:px-8 max-w-7xl mx-auto w-full pb-16">
+        <div className="flex items-end justify-between mb-8">
+          <div className="flex items-center gap-3">
+            <span className="size-2 rounded-full bg-brand animate-pulse" />
+            <div>
+              <span className="text-[10px] tracking-[0.25em] uppercase text-text-3 mb-1 block">🔴 {t("channels.live.name")}</span>
+              <h2 className="text-2xl font-display font-bold text-text-0">正在直播</h2>
+            </div>
+          </div>
+          <Link href={`/${locale}/channel/live`} className="text-sm text-joy hover:underline">{t("home.viewAll")}</Link>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {hotLive.map((live, i) => (
+            <Link key={live.slug} href={`/${locale}/channel/live`} className="card-luxury group relative rounded-2xl overflow-hidden bg-bg-secondary border border-border-subtle"
+              style={{ animation: "fade-up 0.4s var(--ease-out-expo) both", animationDelay: `${i * 0.08}s` }}>
+              <div className="relative aspect-video overflow-hidden">
+                <img src={live.image} alt={live.title} className="size-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-brand text-[10px] font-bold text-white">
+                  <span className="size-1.5 rounded-full bg-white animate-pulse" />LIVE
+                </div>
+              </div>
+              <div className="p-4">
+                <span className="text-[10px] text-text-2">{live.streamer}</span>
+                <p className="text-sm text-text-0 mt-0.5 line-clamp-1">{live.title}</p>
+                <div className="flex items-center justify-between mt-2">
+                  <span className="text-sm font-display font-bold text-joy">{live.price}</span>
+                  <span className="text-[10px] text-text-3"><Eye className="size-3 inline" />{(live.viewers / 1000).toFixed(1)}K</span>
+                </div>
+              </div>
             </Link>
           ))}
         </div>
