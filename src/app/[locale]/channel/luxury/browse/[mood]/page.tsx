@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { ChevronLeft, Star, Sparkles } from "lucide-react";
 import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import { GlimmerDot } from "@/components/brand/GlimmerDot";
 import { Badge } from "@/components/brand/Badge";
 import { BrandButton } from "@/components/brand/BrandButton";
@@ -99,6 +100,7 @@ export default function BrowseMoodPage() {
           </div>
         </div>
       </section>
-    </main>
+      <Footer />
+</main>
   );
 }

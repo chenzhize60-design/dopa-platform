@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { Radio, Eye } from "lucide-react";
 import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import { BrandButton } from "@/components/brand/BrandButton";
 import { liveItems } from "@/data/channel/live";
 
@@ -82,6 +83,7 @@ export default function LiveChannelPage() {
           </div>
         </div>
       </section>
-    </main>
+      <Footer />
+</main>
   );
 }

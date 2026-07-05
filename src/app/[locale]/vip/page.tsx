@@ -2,78 +2,69 @@
 
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { Crown, Zap, Infinity, Palette, Sparkles, ArrowLeft, Check } from "lucide-react";
+import { Crown, Zap, Sparkles, Check, ArrowRight } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BrandButton } from "@/components/brand/BrandButton";
-
-const plans = [
-  { id: "monthly", priceKey: "vip.monthlyPrice", periodKey: "vip.monthly", popular: false, highlight: "var(--brand)" },
-  { id: "yearly", priceKey: "vip.yearlyPrice", periodKey: "vip.yearly", popular: true, highlight: "var(--joy)", saveKey: "vip.savePercent" },
-];
-
-const benefits = [
-  { icon: Infinity, key: "vip.benefitUnlimited" },
-  { icon: Zap, key: "vip.benefit2x" },
-  { icon: Palette, key: "vip.benefitSkins" },
-  { icon: Sparkles, key: "vip.benefitGlimmer" },
-  { icon: Crown, key: "vip.benefitBadge" },
-];
 
 export default function VipPage() {
   const t = useTranslations();
   const locale = useLocale();
 
   return (
-    <div className="min-h-screen flex flex-col page-enter">
+    <main className="overflow-x-hidden w-full max-w-full min-h-screen">
       <Header />
-      <main className="flex-1">
-        {/* Hero */}
-        <section className="relative px-4 py-16 sm:py-24 text-center overflow-hidden" style={{ background: "linear-gradient(180deg, rgba(255,59,92,0.06) 0%, transparent 100%)" }}>
-          <div className="max-w-2xl mx-auto">
-            <div className="inline-flex items-center justify-center size-20 rounded-2xl mb-6 animate-pulse-glow" style={{ backgroundColor: "rgba(255,59,92,0.1)" }}>
-              <Crown className="size-10" style={{ color: "var(--brand)" }} />
-            </div>
-            <h1 className="text-4xl sm:text-5xl font-display font-black text-text-primary mb-3">{t("vip.title")}</h1>
-            <p className="text-text-secondary text-lg max-w-sm mx-auto">{t("vip.subtitle")}</p>
+      <section className="section-cinema px-6 sm:px-12 lg:px-24 text-center">
+        <div className="max-w-2xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8" style={{ backgroundColor: "rgba(232,195,0,0.1)", color: "var(--warm)", border: "1px solid rgba(232,195,0,0.15)" }}>
+            <Crown className="size-4" />{t("vip.title")}
           </div>
-        </section>
+          <h1 className="h2-cinema text-[var(--t-high)] mb-4">{t("vip.subtitle")}</h1>
+          <p className="text-lg mb-12" style={{ color: "var(--t-mid)" }}>
+            每月{Math.floor(Math.random() * 30)}号，会员日双倍积分
+          </p>
+        </div>
+      </section>
 
-        {/* Plans */}
-        <section className="px-4 sm:px-6 pb-8 max-w-3xl mx-auto -mt-10 stagger">
-          {plans.map((plan) => (
-            <div key={plan.id}
-              className={`relative rounded-2xl border p-7 flex flex-col items-center text-center transition-all duration-300 card-magnetic ${
-                plan.popular ? "border-joy bg-joy-muted" : "border-border-default bg-bg-surface"}`}>
-              {plan.popular && <span className="absolute -top-3 px-3 py-0.5 rounded-full text-xs font-bold text-black bg-joy">{t("vip.popular")}</span>}
-              <h3 className="text-lg font-display font-bold text-text-primary mb-1">{t(plan.periodKey)}</h3>
-              <div className="flex items-baseline gap-1 mb-4">
-                <span className="text-4xl font-display font-black" style={{ color: plan.highlight }}>{t(plan.priceKey)}</span>
-                <span className="text-sm text-text-muted">/{t("vip.perMonth")}</span>
-              </div>
-              {plan.saveKey && <span className="text-xs px-2.5 py-1 rounded-full mb-4" style={{ backgroundColor: "rgba(0,212,200,0.12)", color: "var(--heal)" }}>{t(plan.saveKey)}</span>}
-              <BrandButton variant={plan.popular ? "coral" : "ghost"} size="lg" className="w-full" showGlimmer={plan.popular}>{t("vip.subscribe")}</BrandButton>
+      {/* Plans */}
+      <section className="px-6 sm:px-12 lg:px-24 pb-12">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[
+            { name: t("vip.monthly"), price: t("vip.monthlyPrice"), desc: "按月订阅，随时取消", popular: false, accent: "rgba(255,255,255,0.05)" },
+            { name: t("vip.yearly"), price: t("vip.yearlyPrice"), desc: `${t("vip.savePercent")}，${(199/12).toFixed(0)}${t("vip.perMonth")}`, popular: true, accent: "rgba(232,195,0,0.08)" },
+          ].map((plan, i) => (
+            <div key={i} className="card-cinema p-8 relative" style={{ background: plan.popular ? "rgba(232,195,0,0.04)" : undefined, borderColor: plan.popular ? "rgba(232,195,0,0.15)" : undefined }}>
+              {plan.popular && <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-0.5 rounded-full text-xs font-bold text-white" style={{ background: "var(--warm)" }}>{t("vip.popular")}</span>}
+              <h3 className="text-lg font-bold text-[var(--t-high)]">{plan.name}</h3>
+              <p className="text-4xl font-black mt-4 mb-2" style={{ color: "var(--warm)" }}>{plan.price}</p>
+              <p className="text-sm mb-8" style={{ color: "var(--t-mid)" }}>{plan.desc}</p>
+              <BrandButton variant="dopamine" size="lg" className="w-full" showGlimmer>{t("vip.subscribe")}</BrandButton>
             </div>
           ))}
-        </section>
+        </div>
+      </section>
 
-        {/* Benefits */}
-        <section className="px-4 sm:px-6 pb-20 max-w-3xl mx-auto">
-          <h2 className="text-xl font-display font-bold text-text-primary text-center mb-8">{t("vip.benefitsTitle")}</h2>
-          <div className="flex flex-col gap-2.5 stagger">
-            {benefits.map((b) => (
-              <div key={b.key} className="flex items-center gap-3 p-4 rounded-xl bg-bg-surface border border-border-subtle card-magnetic">
-                <div className="size-10 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: "rgba(0,212,200,0.1)" }}>
-                  <b.icon className="size-5" style={{ color: "var(--heal)" }} />
-                </div>
-                <span className="flex-1 text-sm font-medium text-text-primary">{t(b.key)}</span>
-                <Check className="size-4 text-heal shrink-0" />
+      {/* Benefits */}
+      <section className="section-cinema px-6 sm:px-12 lg:px-24 grain-overlay">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="h2-cinema text-[var(--t-high)] text-center mb-12">{t("vip.benefitsTitle")}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {[t("vip.benefitUnlimited"), t("vip.benefit2x"), t("vip.benefitSkins"), t("vip.benefitGlimmer"), t("vip.benefitBadge")].map((b, i) => (
+              <div key={i} className="card-cinema p-5 text-center">
+                <Check className="size-6 mx-auto mb-3" style={{ color: "var(--warm)" }} />
+                <p className="text-sm text-[var(--t-high)]">{b}</p>
               </div>
             ))}
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
+
+      <section className="pb-24 text-center">
+        <Link href={`/${locale}`} className="text-sm hover:underline" style={{ color: "var(--accent)" }}>
+          {t("browse.back")}
+        </Link>
+      </section>
       <Footer />
-    </div>
+</main>
   );
 }

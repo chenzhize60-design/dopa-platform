@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { ChevronLeft, Star, UtensilsCrossed, Zap, Heart, Crown } from "lucide-react";
 import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import { GlimmerDot } from "@/components/brand/GlimmerDot";
 import { BrandButton } from "@/components/brand/BrandButton";
 import { foodItems } from "@/data/channel/food";
@@ -91,6 +92,7 @@ export default function FoodChannelPage() {
           <UtensilsCrossed className="size-4" />{t("browse.loadMore")}
         </BrandButton>
       </div>
-    </main>
+      <Footer />
+</main>
   );
 }

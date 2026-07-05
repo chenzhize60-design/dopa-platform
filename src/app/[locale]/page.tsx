@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import { getTrendingProducts } from "@/data/products";
 import { foodItems } from "@/data/channel/food";
 import { getHotLive } from "@/data/channel/live";
@@ -292,6 +293,7 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-    </main>
+      <Footer />
+</main>
   );
 }

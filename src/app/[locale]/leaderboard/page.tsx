@@ -2,86 +2,80 @@
 
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { Trophy, Medal, Crown, Zap, ArrowLeft } from "lucide-react";
+import { Trophy, Crown, Medal, Zap } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { BrandButton } from "@/components/brand/BrandButton";
-import { GlimmerDot } from "@/components/brand/GlimmerDot";
 
-const topUsers = [
-  { rank: 1, name: "DopaKing", points: 5247, level: 7, titleKey: "leaderboard.titles.king" },
-  { rank: 2, name: "FashionGuru", points: 4218, level: 6, titleKey: "leaderboard.titles.guru" },
-  { rank: 3, name: "JoyCollector", points: 3891, level: 6, titleKey: "leaderboard.titles.guru" },
-  { rank: 4, name: "VirtualVIP", points: 3150, level: 5, titleKey: "leaderboard.titles.connoisseur" },
-  { rank: 5, name: "DopaQueen", points: 2890, level: 5, titleKey: "leaderboard.titles.connoisseur" },
-  { rank: 6, name: "WindowShopper", points: 2456, level: 4, titleKey: "leaderboard.titles.hunter" },
-  { rank: 7, name: "DreamBuyer", points: 2103, level: 4, titleKey: "leaderboard.titles.hunter" },
-  { rank: 8, name: "LuxuryDream", points: 1850, level: 4, titleKey: "leaderboard.titles.hunter" },
+const mockUsers = [
+  { name: "时尚达人小美", level: "Lv.42", points: 128500, rank: 1, icon: Crown, color: "var(--warm)" },
+  { name: "奢侈品猎人老K", level: "Lv.39", points: 112300, rank: 2, icon: Medal, color: "#A0A0B0" },
+  { name: "假装买全世界", level: "Lv.37", points: 98700, rank: 3, icon: Medal, color: "#D4A574" },
+  { name: "多巴胺上瘾者", level: "Lv.35", points: 87600, rank: 4 },
+  { name: "我不买我就看看", level: "Lv.33", points: 76500, rank: 5 },
+  { name: "深夜下单大师", level: "Lv.31", points: 65400, rank: 6 },
+  { name: "冲动消费王者", level: "Lv.29", points: 54300, rank: 7 },
+  { name: "理财就是多巴胺", level: "Lv.27", points: 43200, rank: 8 },
 ];
-
-function RankBadge({ rank }: { rank: number }) {
-  if (rank === 1) return <Trophy className="size-5 text-joy drop-shadow-[0_0_6px_rgba(255,214,10,0.5)]" />;
-  if (rank === 2) return <Medal className="size-5 text-text-secondary" />;
-  if (rank === 3) return <Medal className="size-5" style={{ color: "#CD7F32" }} />;
-  return <span className="text-sm font-bold text-text-muted w-5 text-center">{rank}</span>;
-}
 
 export default function LeaderboardPage() {
   const t = useTranslations();
   const locale = useLocale();
 
   return (
-    <div className="min-h-screen flex flex-col page-enter">
+    <main className="overflow-x-hidden w-full max-w-full min-h-screen">
       <Header />
-      <main className="flex-1">
-        <section className="relative px-4 py-14 sm:py-20 text-center" style={{ background: "linear-gradient(180deg, rgba(255,214,10,0.06) 0%, rgba(0,212,200,0.03) 100%)" }}>
-          <div className="max-w-xl mx-auto">
-            <div className="inline-flex items-center justify-center size-20 rounded-2xl mb-5" style={{ backgroundColor: "rgba(255,214,10,0.1)" }}>
-              <Trophy className="size-10" style={{ color: "var(--joy)" }} />
-            </div>
-            <h1 className="text-4xl sm:text-5xl font-display font-black text-text-primary mb-3">{t("leaderboard.title")}</h1>
-            <p className="text-text-secondary text-lg max-w-sm mx-auto">{t("leaderboard.subtitle")}</p>
-
-            <div className="mt-8 inline-flex items-center gap-5 px-6 py-4 rounded-2xl bg-bg-surface border border-border-default">
-              <div className="text-left"><span className="text-xs text-text-muted">{t("leaderboard.myRank")}</span><p className="text-sm font-bold text-text-primary">#{t("leaderboard.notRanked")}</p></div>
-              <div className="w-px h-8 bg-border-default" />
-              <div className="text-left"><span className="text-xs text-text-muted">{t("profile.dopaminePoints")}</span><p className="text-sm font-bold text-joy">1,247</p></div>
-              <div className="w-px h-8 bg-border-default" />
-              <div className="text-left"><span className="text-xs text-text-muted">{t("leaderboard.level")}</span><p className="text-sm font-bold text-heal">Lv.7</p></div>
-            </div>
-
-            <div className="mt-4">
-              <Link href={`/${locale}/vip`}>
-                <BrandButton variant="dopamine" size="sm"><Zap className="size-4" />{t("leaderboard.getBoost")}</BrandButton>
-              </Link>
-            </div>
+      <section className="section-cinema px-6 sm:px-12 lg:px-24 text-center">
+        <div className="max-w-2xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8" style={{ backgroundColor: "rgba(232,195,0,0.1)", color: "var(--warm)", border: "1px solid rgba(232,195,0,0.15)" }}>
+            <Trophy className="size-4" />{t("leaderboard.title")}
           </div>
-        </section>
+          <h1 className="h2-cinema text-[var(--t-high)] mb-4">{t("leaderboard.subtitle")}</h1>
+        </div>
+      </section>
 
-        <section className="px-4 sm:px-6 pb-20 max-w-2xl mx-auto -mt-6">
-          <div className="rounded-2xl border border-border-default bg-bg-surface overflow-hidden stagger">
-            {topUsers.map((user) => (
-              <div key={user.rank}
-                className={`flex items-center gap-3 px-4 sm:px-6 py-4 border-b border-border-subtle last:border-0 transition-colors hover:bg-bg-elevated ${
-                  user.rank <= 3 ? "bg-bg-elevated" : ""}`}>
-                <div className="flex items-center justify-center w-8 shrink-0"><RankBadge rank={user.rank} /></div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-1.5">
-                    <p className="text-sm font-medium text-text-primary truncate">{user.name}</p>
-                    {user.rank === 1 && <Crown className="size-3.5 text-joy" />}
+      {/* Your rank */}
+      <section className="px-6 sm:px-12 lg:px-24 pb-6">
+        <div className="max-w-2xl mx-auto">
+          <div className="card-cinema p-6 flex items-center gap-6" style={{ borderColor: "rgba(232,195,0,0.15)" }}>
+            <div className="size-16 rounded-full flex items-center justify-center text-2xl font-black" style={{ backgroundColor: "rgba(232,195,0,0.08)", color: "var(--warm)" }}>
+              #12
+            </div>
+            <div className="flex-1">
+              <p className="text-sm font-bold text-[var(--t-high)]">{t("leaderboard.myRank")}</p>
+              <p className="text-xs mt-0.5" style={{ color: "var(--t-mid)" }}>{t("leaderboard.getBoost")}</p>
+            </div>
+            <span className="text-xs font-bold" style={{ color: "var(--warm)" }}>Lv.18 · 23,400 pts</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Rankings */}
+      <section className="px-6 sm:px-12 lg:px-24 pb-24">
+        <div className="max-w-2xl mx-auto">
+          <div className="space-y-3">
+            {mockUsers.map((u, i) => {
+              const Icon = u.icon;
+              return (
+                <div key={i} className="card-cinema p-4 flex items-center gap-4">
+                  <div className="size-10 rounded-full flex items-center justify-center text-sm font-black"
+                    style={{ backgroundColor: u.rank <= 3 ? `${u.color || "var(--warm)"}20` : "rgba(255,255,255,0.03)", color: u.color || "var(--t-mid)" }}>
+                    {u.rank === 1 ? <Crown className="size-5" style={{ color: "var(--warm)" }} /> : `#${u.rank}`}
                   </div>
-                  <p className="text-xs text-text-muted">{t(user.titleKey)}</p>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-[var(--t-high)]">{u.name}</p>
+                    <p className="text-xs" style={{ color: "var(--t-low)" }}>{u.level}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm font-bold" style={{ color: "var(--warm)" }}>{u.points.toLocaleString()}</p>
+                    <p className="text-[10px]" style={{ color: "var(--t-low)" }}>pts</p>
+                  </div>
                 </div>
-                <div className="flex items-center gap-1.5 shrink-0">
-                  <GlimmerDot size={6} color={user.rank <= 3 ? "var(--joy)" : "var(--brand)"} />
-                  <span className="text-sm font-display font-bold text-text-primary">{user.points.toLocaleString()}</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
       <Footer />
-    </div>
+</main>
   );
 }

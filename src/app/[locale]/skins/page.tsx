@@ -2,64 +2,77 @@
 
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import { Palette, Sparkles, Clock, ArrowLeft } from "lucide-react";
+import { Palette, Sparkles } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BrandButton } from "@/components/brand/BrandButton";
-import { Badge } from "@/components/brand/Badge";
-
-const skins = [
-  { id: "jacquemus", nameKey: "skins.jacquemus.name", coinPrice: 699, price: "¥6.99", color: "#FFB347", bgColor: "rgba(255,179,71,0.12)", type: "联名", limited: true },
-  { id: "offwhite", nameKey: "skins.offwhite.name", coinPrice: 899, price: "¥8.99", color: "#FFD60A", bgColor: "rgba(255,214,10,0.12)", type: "联名", permanent: true },
-  { id: "gentlemonster", nameKey: "skins.gm.name", coinPrice: 1299, price: "¥12.99", color: "#00D4C8", bgColor: "rgba(0,212,200,0.12)", type: "联名", permanent: true },
-  { id: "spring", nameKey: "skins.spring.name", coinPrice: 399, price: "¥3.99", color: "#FF3B5C", bgColor: "rgba(255,59,92,0.12)", type: "限定", limited: true },
-];
+import { skins } from "@/lib/skins";
 
 export default function SkinsPage() {
   const t = useTranslations();
   const locale = useLocale();
+  const free = skins.filter(s => s.tier === "free");
+  const vip = skins.filter(s => s.tier === "vip");
 
   return (
-    <div className="min-h-screen flex flex-col page-enter">
+    <main className="overflow-x-hidden w-full max-w-full min-h-screen">
       <Header />
-      <main className="flex-1">
-        <section className="relative px-4 py-14 sm:py-20 text-center" style={{ background: "linear-gradient(180deg, rgba(0,212,200,0.05) 0%, rgba(255,59,92,0.03) 100%)" }}>
-          <div className="max-w-2xl mx-auto">
-            <div className="inline-flex items-center justify-center size-20 rounded-2xl mb-5" style={{ backgroundColor: "rgba(0,212,200,0.1)" }}>
-              <Palette className="size-10" style={{ color: "var(--heal)" }} />
-            </div>
-            <h1 className="text-4xl sm:text-5xl font-display font-black text-text-primary mb-3">{t("skins.title")}</h1>
-            <p className="text-text-secondary text-lg max-w-sm mx-auto">{t("skins.subtitle")}</p>
+      <section className="section-cinema px-6 sm:px-12 lg:px-24 text-center">
+        <div className="max-w-2xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-8" style={{ backgroundColor: "rgba(168,85,247,0.1)", color: "#A855F7", border: "1px solid rgba(168,85,247,0.15)" }}>
+            <Palette className="size-4" />{t("skins.title")}
           </div>
-        </section>
+          <h1 className="h2-cinema text-[var(--t-high)] mb-4">{t("skins.subtitle")}</h1>
+        </div>
+      </section>
 
-        <section className="px-4 sm:px-6 pb-20 max-w-5xl mx-auto -mt-8 stagger">
-          {skins.map((skin) => (
-            <div key={skin.id} className="rounded-2xl border border-border-default bg-bg-surface overflow-hidden transition-all duration-300 card-magnetic">
-              <div className="aspect-video flex items-center justify-center relative" style={{ backgroundColor: skin.bgColor }}>
-                <div className="flex flex-col items-center gap-2">
-                  <Sparkles className="size-12" style={{ color: skin.color }} />
-                  <span className="text-sm font-display font-bold" style={{ color: skin.color }}>{t(skin.nameKey)}</span>
+      {/* Free */}
+      <section className="px-6 sm:px-12 lg:px-24 pb-8">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-xl font-bold text-[var(--t-high)] mb-6">{t("skins.permanent")}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {free.map(s => (
+              <div key={s.id} className="card-cinema p-6 text-center">
+                <div className="w-full aspect-[3/2] rounded-xl mb-4 flex items-center justify-center" style={{
+                  background: `linear-gradient(135deg, ${s.colors.primary} 0%, ${s.colors.secondary} 100%)`,
+                  color: s.colors.textLight
+                }}>
+                  <span className="text-xs font-bold tracking-wider">{s.name}</span>
                 </div>
+                <p className="text-sm font-bold text-[var(--t-high)]">{s.nameEn}</p>
               </div>
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-2">
-                    {skin.limited && <span className="flex items-center gap-1 text-xs text-alert"><Clock className="size-3" />{t("skins.limited")}</span>}
-                    {skin.permanent && <Badge variant="verified">{t("skins.permanent")}</Badge>}
-                  </div>
-                  <span className="text-xs text-text-muted">{skin.type}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* VIP */}
+      <section className="px-6 sm:px-12 lg:px-24 pb-12">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-xl font-bold text-[var(--t-high)] mb-6">{t("skins.limited")} · VIP</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {vip.map(s => (
+              <div key={s.id} className="card-cinema p-6 text-center relative overflow-hidden">
+                <span className="absolute top-3 right-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold" style={{ background: "var(--accent)", color: "#fff" }}>VIP</span>
+                <div className="w-full aspect-[3/2] rounded-xl mb-4 flex items-center justify-center" style={{
+                  background: `linear-gradient(135deg, ${s.colors.primary} 0%, ${s.colors.secondary} 100%)`,
+                  color: s.colors.textLight
+                }}>
+                  <span className="text-xs font-bold tracking-wider">{s.name}</span>
                 </div>
-                <div className="flex items-center justify-between">
-                  <div><span className="text-sm font-display font-bold text-joy">{skin.coinPrice} {t("coins.unit")}</span><span className="text-xs text-text-muted ml-1">{skin.price}</span></div>
-                  <BrandButton variant="dopamine" size="sm">{t("skins.buy")}</BrandButton>
-                </div>
+                <p className="text-sm font-bold text-[var(--t-high)]">{s.nameEn}</p>
+                {s.price && <p className="text-xs mt-2 mb-4" style={{ color: "var(--warm)" }}>{s.price} {t("coins.unit")}</p>}
+                <BrandButton variant="coral" size="sm" className="w-full">{t("skins.buy")}</BrandButton>
               </div>
-            </div>
-          ))}
-        </section>
-      </main>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-24 text-center">
+        <Link href={`/${locale}`} className="text-sm hover:underline" style={{ color: "var(--accent)" }}>{t("browse.back")}</Link>
+      </section>
       <Footer />
-    </div>
+</main>
   );
 }
