@@ -1,152 +1,57 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { ChevronLeft, MapPin, CreditCard, CheckCircle2 } from "lucide-react";
+import { useTranslations, useLocale } from "next-intl";
+import { Check, CreditCard } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { BrandButton } from "@/components/brand/BrandButton";
-import { GlimmerDot } from "@/components/brand/GlimmerDot";
 import { useCartStore } from "@/stores/cart";
 
-const steps = ["Cart", "Shipping", "Payment", "Confirm"];
-
-const addresses = [
-  {
-    id: "1",
-    name: "Home",
-    address: "Room 1201, Building 3, Lujiazui Financial Center, Pudong, Shanghai",
-  },
-  {
-    id: "2",
-    name: "Office",
-    address: "Floor 28, Tower A, Jing'an Kerry Centre, Jing'an, Shanghai",
-  },
-];
-
 export default function CheckoutPage() {
-  const items = useCartStore((s) => s.items);
+  const t = useTranslations();
+  const locale = useLocale();
   const totalPrice = useCartStore((s) => s.totalPrice());
+  const items = useCartStore((s) => s.items);
+  const [step, setStep] = useState(0);
+  const done = step === 2;
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <main className="overflow-x-hidden w-full max-w-full min-h-screen">
       <Header />
+      <section className="section-cinema px-6 sm:px-12 lg:px-24">
+        <div className="max-w-lg mx-auto">
+          <h1 className="h2-cinema text-[var(--t-high)] mb-12">{t("checkout.title")}</h1>
 
-      <main className="flex-1 max-w-3xl mx-auto px-4 sm:px-6 py-12 w-full">
-        <Link
-          href="/cart"
-          className="inline-flex items-center gap-1 text-sm text-text-secondary hover:text-text-primary transition-colors duration-150 mb-8"
-        >
-          <ChevronLeft className="size-4" />
-          Back to Cart
-        </Link>
-
-        <h1 className="text-3xl font-display font-bold text-text-primary mb-8">
-          Checkout
-        </h1>
-
-        {/* Progress */}
-        <div className="flex items-center justify-center gap-2 mb-12">
-          {steps.map((s, i) => (
-            <div key={s} className="flex items-center gap-2">
-              <div
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-colors duration-300 ${
-                  i === 0
-                    ? "bg-brand text-white"
-                    : "bg-bg-surface text-text-muted"
-                }`}
-              >
-                {i < 1 ? (
-                  <CheckCircle2 className="size-3" />
-                ) : (
-                  <GlimmerDot size={4} color="var(--text-muted)" />
-                )}
-                {s}
+          {done ? (
+            <div className="card-cinema p-10 text-center">
+              <div className="size-16 rounded-full flex items-center justify-center mx-auto mb-6" style={{ backgroundColor: "rgba(0,201,182,0.12)" }}>
+                <Check className="size-8" style={{ color: "var(--cool)" }} />
               </div>
-              {i < steps.length - 1 && (
-                <div className="w-6 h-px bg-border-default" />
-              )}
+              <h2 className="text-xl font-bold text-[var(--t-high)] mb-2">{t("checkout.success.title")}</h2>
+              <p className="text-sm mb-8" style={{ color: "var(--t-mid)" }}>{t("checkout.success.delivery")}</p>
+              <Link href={`/${locale}`} className="text-sm font-bold hover:underline" style={{ color: "var(--accent)" }}>
+                {t("checkout.success.continueShopping")}
+              </Link>
             </div>
-          ))}
+          ) : (
+            <div className="card-cinema p-8">
+              <div className="flex items-center justify-between mb-6">
+                <span className="text-sm" style={{ color: "var(--t-mid)" }}>{t("cart.subtotal")} ({items.length})</span>
+                <span className="text-2xl font-black" style={{ color: "var(--accent)" }}>{totalPrice}</span>
+              </div>
+              <div className="p-4 rounded-xl mb-8" style={{ backgroundColor: "rgba(255,255,255,0.02)" }}>
+                <p className="text-sm text-[var(--t-high)]"><CreditCard className="size-4 inline mr-2" />{t("orderDetail.paymentMethod")}</p>
+              </div>
+              <BrandButton variant="coral" size="lg" className="w-full" showGlimmer onClick={() => setStep(step + 1)}>
+                {step === 0 ? t("checkout.next") : step === 1 ? t("checkout.confirmPay") : t("checkout.pay")}
+              </BrandButton>
+            </div>
+          )}
         </div>
-
-        {/* Address */}
-        <section className="mb-8">
-          <h2 className="text-lg font-display font-bold text-text-primary mb-4 flex items-center gap-2">
-            <MapPin className="size-5 text-brand" />
-            Shipping Address
-          </h2>
-          <div className="flex flex-col gap-3">
-            {addresses.map((addr) => (
-              <label
-                key={addr.id}
-                className="flex items-start gap-4 p-4 rounded-xl border border-border-default bg-bg-surface cursor-pointer hover:border-brand/30 transition-colors duration-150"
-              >
-                <input
-                  type="radio"
-                  name="address"
-                  defaultChecked={addr.id === "1"}
-                  className="mt-0.5 accent-brand"
-                />
-                <div>
-                  <span className="text-sm font-medium text-text-primary">
-                    {addr.name}
-                  </span>
-                  <p className="text-sm text-text-muted mt-0.5">
-                    {addr.address}
-                  </p>
-                </div>
-              </label>
-            ))}
-          </div>
-        </section>
-
-        {/* Order summary */}
-        <section className="mb-8">
-          <h2 className="text-lg font-display font-bold text-text-primary mb-4 flex items-center gap-2">
-            <CreditCard className="size-5 text-brand" />
-            Order Summary
-          </h2>
-          <div className="p-6 rounded-2xl bg-bg-surface border border-border-default">
-            {items.length === 0 ? (
-              <p className="text-text-muted text-sm">No items in cart.</p>
-            ) : (
-              items.map((item) => (
-                <div
-                  key={item.product.slug}
-                  className="flex items-center gap-3 py-3 border-b border-border-default last:border-0"
-                >
-                  <span className="text-sm text-text-secondary flex-1 truncate">
-                    {item.product.brand} {item.product.name}
-                    <span className="text-text-muted ml-2">x{item.quantity}</span>
-                  </span>
-                  <span className="text-sm font-medium text-text-primary">
-                    {item.product.price}
-                  </span>
-                </div>
-              ))
-            )}
-            <div className="flex justify-between items-center pt-4 mt-4 border-t border-border-default">
-              <span className="text-text-secondary">Total</span>
-              <span className="text-xl font-display font-bold text-text-primary">
-                {items.length > 0 ? totalPrice : "¥0"}
-              </span>
-            </div>
-          </div>
-        </section>
-
-        {/* Place order */}
-        <BrandButton
-          variant="coral"
-          size="xl"
-          className="w-full"
-          showGlimmer
-          disabled={items.length === 0}
-        >
-          Place Order
-        </BrandButton>
-      </main>
-
+      </section>
       <Footer />
-    </div>
+    </main>
   );
 }
