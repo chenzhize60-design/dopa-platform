@@ -1,110 +1,122 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 /* ============================================
-   DOPA · Taste-Skill Cinema Design System
-   Cabinet Grotesk · GSAP Motion · AIDA Layout
+   DOPA · Premium Cinema Design System v2
+   Refined depth, glass surfaces, dramatic image treatment
    ============================================ */
 
 :root {
-  /* Deep cinematic palette */
-  --void: #050508;
-  --abyss: #0A0A0E;
-  --obsidian: #111116;
-  --graphite: #1A1A20;
-  --steel: #25252E;
+  /* Depth palette — layered dark tones */
+  --abyss:   #060609;
+  --void:    #0C0C12;
+  --surface: #15151E;
+  --elevated:#1E1E2A;
+  --border:  rgba(255,255,255,0.05);
+  --border-strong: rgba(255,255,255,0.08);
 
-  /* Accents — restrained, used only for meaning */
-  --accent: #FF5A6E;
-  --accent-glow: rgba(255, 90, 110, 0.12);
-  --warm: #E8C300;
-  --cool: #00C9B6;
+  /* Accents */
+  --accent:  #FF5A6E;
+  --warm:    #E8C400;
+  --cool:    #00C9B6;
 
-  /* Text */
-  --t-high: #F0EDF5;
-  --t-mid: #9895A2;
-  --t-low: #5A5764;
+  /* Text hierarchy */
+  --t-high:  #F2F0F5;
+  --t-mid:   #9490A0;
+  --t-low:   #565260;
 
-  /* Typography — Cabinet Grotesk per taste-skill */
-  --font-display: "Cabinet Grotesk", -apple-system, sans-serif;
+  /* Typography */
+  --font-display: "Plus Jakarta Sans", "Cabinet Grotesk", -apple-system, sans-serif;
   --font-body: "Inter", "Noto Sans SC", -apple-system, sans-serif;
-
-  /* Spacing — cinematic scale */
-  --section-gap: 12rem;
 }
 
 @theme inline {
-  --color-brand: var(--accent);
-  --color-joy: var(--warm);
-  --color-heal: var(--cool);
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
+  --color-brand: var(--accent); --color-joy: var(--warm); --color-heal: var(--cool);
+  --font-display: var(--font-display); --font-body: var(--font-body);
 }
+
+/* ============================================
+   Base
+   ============================================ */
 
 body {
   font-family: var(--font-body);
   color: var(--t-high);
-  background: var(--void);
+  background: var(--abyss);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-::selection { background: var(--accent-glow); color: var(--t-high); }
-
-/* Scrollbar — hidden aesthetic */
+::selection { background: rgba(255,90,110,0.25); color: var(--t-high); }
+*:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--steel); }
-::-webkit-scrollbar-thumb:hover { background: var(--t-low); }
+::-webkit-scrollbar-thumb { background: var(--elevated); border-radius: 2px; }
 
 /* ============================================
-   Taste-Skill Section Spacing
+   Section spacing — cinematic chapters
    ============================================ */
 
-.section-cinema {
-  padding-top: 8rem;
-  padding-bottom: 8rem;
-}
-@media (min-width: 768px) {
-  .section-cinema {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
-  }
+.section-cinema { padding-top: 7rem; padding-bottom: 7rem; }
+@media (min-width: 768px) { .section-cinema { padding-top: 10rem; padding-bottom: 10rem; } }
+
+.section-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-strong) 20%, var(--border-strong) 80%, transparent);
 }
 
 /* ============================================
-   Typography — 2-line iron rule
+   Typography scale
    ============================================ */
 
 .h1-cinema {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 5.5vw, 5.5rem);
+  font-size: clamp(2.8rem, 6vw, 6rem);
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
 }
 
 .h2-cinema {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(1.8rem, 4vw, 3.2rem);
   font-weight: 700;
-  line-height: 1.12;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.h3-cinema {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 /* ============================================
-   Cards — clean, no clutter
+   Cards — layered depth with glass back
    ============================================ */
 
 .card-cinema {
-  background: var(--obsidian);
-  border: 1px solid rgba(255,255,255,0.04);
-  border-radius: 1.25rem;
+  background: linear-gradient(135deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
   overflow: hidden;
-  transition: border-color 0.4s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  backdrop-filter: blur(2px);
 }
+
 .card-cinema:hover {
-  border-color: rgba(255,255,255,0.1);
+  border-color: var(--border-strong);
   transform: translateY(-4px);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04) inset;
+}
+
+.card-cinema img {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-cinema:hover img {
+  transform: scale(1.06);
 }
 
 /* ============================================
@@ -112,14 +124,14 @@ body {
    ============================================ */
 
 .nav-cinema {
-  background: rgba(5, 5, 8, 0.82);
-  backdrop-filter: blur(20px) saturate(140%);
-  -webkit-backdrop-filter: blur(20px) saturate(140%);
-  border-bottom: 1px solid rgba(255,255,255,0.03);
+  background: rgba(6,6,9,0.82);
+  backdrop-filter: blur(24px) saturate(140%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  border-bottom: 1px solid var(--border);
 }
 
 /* ============================================
-   Bento Grid — gapless dense flow
+   Bento grid — gapless dense
    ============================================ */
 
 .bento-grid {
@@ -129,31 +141,61 @@ body {
 }
 
 /* ============================================
-   GSAP helpers
+   Hero background treatment
    ============================================ */
 
-.reveal-item {
-  opacity: 0;
-  transform: translateY(48px);
-}
-
-.fade-scale-item {
-  opacity: 0;
-  transform: scale(0.88);
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
 }
 
 /* ============================================
-   Grain texture overlay
+   Animations
    ============================================ */
 
-.grain-overlay {
-  position: relative;
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(48px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-.grain-overlay::after {
+
+@keyframes pulse-subtle {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.animate-pulse-subtle { animation: pulse-subtle 4s ease-in-out infinite; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+/* Stagger */
+.stagger > * { opacity: 0; animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.stagger > *:nth-child(1) { animation-delay: 0s; }
+.stagger > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger > *:nth-child(3) { animation-delay: 0.2s; }
+.stagger > *:nth-child(4) { animation-delay: 0.3s; }
+.stagger > *:nth-child(5) { animation-delay: 0.4s; }
+.stagger > *:nth-child(6) { animation-delay: 0.5s; }
+
+/* ============================================
+   Grain texture
+   ============================================ */
+
+.grain-overlay::before {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; }
 }

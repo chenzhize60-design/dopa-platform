@@ -31,7 +31,7 @@ export default function RootLayout({
     >
       <head>
         <link
-          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap"
+          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=plus-jakarta-sans@400,500,600,700,800&display=swap"
           rel="stylesheet"
         />
       </head>
