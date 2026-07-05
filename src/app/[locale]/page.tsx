@@ -99,10 +99,12 @@ export default function HomePage() {
   }, { scope: ctaRef });
 
   // ━━━ Accessibility — respect reduced-motion ━━━
-  const mm = gsap.matchMedia();
-  mm.add("(prefers-reduced-motion: reduce)", () => {
-    gsap.set("*", { clearProps: "all" });
-  });
+  useGSAP(() => {
+    const mm = gsap.matchMedia();
+    mm.add("(prefers-reduced-motion: reduce)", () => {
+      gsap.set("*", { clearProps: "all" });
+    });
+  }, { scope: mainRef });
 
   const channels = [
     { id: "luxury", label: t("channels.luxury.name"), desc: t("channels.luxury.description"), icon: Gem, href: "/channel/luxury/browse/boost", accent: "var(--accent)" },
