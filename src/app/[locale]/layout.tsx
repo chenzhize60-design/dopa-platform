@@ -3,6 +3,7 @@ import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { LanguageSwitcher } from "@/components/brand/LanguageSwitcher";
+import { ClientProviders } from "@/components/ClientProviders";
 import type { Metadata } from "next";
 
 type Props = {
@@ -30,7 +31,9 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <NextIntlClientProvider messages={messages}>
-      {children}
+      <ClientProviders>
+        {children}
+      </ClientProviders>
       <LanguageSwitcher />
     </NextIntlClientProvider>
   );
