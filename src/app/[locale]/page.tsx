@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { ArrowRight, Gem, UtensilsCrossed, Radio, Zap } from "lucide-react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Header } from "@/components/layout/Header";
@@ -11,7 +12,7 @@ import { getTrendingProducts } from "@/data/products";
 import { foodItems } from "@/data/channel/food";
 import { getHotLive } from "@/data/channel/live";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export default function HomePage() {
   const t = useTranslations();
@@ -20,44 +21,87 @@ export default function HomePage() {
   const hotFood = foodItems.slice(0, 4);
   const hotLive = getHotLive().slice(0, 4);
 
+  const mainRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
-  const bentoRef = useRef<HTMLDivElement>(null);
-  const marqueeRef = useRef<HTMLDivElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
+  const bentoRef = useRef<HTMLElement>(null);
+  const marqueeRef = useRef<HTMLElement>(null);
+  const channelsRef = useRef<HTMLElement>(null);
+  const foodRef = useRef<HTMLElement>(null);
+  const ctaRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Hero fade-in
-      if (heroRef.current) {
-        gsap.fromTo(".hero-text", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power3.out", stagger: 0.15 });
-        gsap.fromTo(".hero-img", { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 1.2, ease: "power3.out", delay: 0.4 });
-      }
+  // ━━━ Hero entrance ━━━
+  useGSAP(() => {
+    gsap.fromTo(".hero-text", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 1, stagger: 0.12, ease: "power4.out" });
+    gsap.fromTo(".hero-img", { x: 100, opacity: 0 }, { x: 0, opacity: 1, duration: 1.2, ease: "power4.out", delay: 0.3 });
+  }, { scope: heroRef });
 
-      // Bento cards reveal on scroll
-      if (bentoRef.current) {
-        gsap.fromTo(".bento-card", { y: 60, opacity: 0, scale: 0.95 },
-          { y: 0, opacity: 1, scale: 1, duration: 0.7, stagger: 0.1, ease: "power3.out",
-            scrollTrigger: { trigger: bentoRef.current, start: "top 75%" } });
-      }
-
-      // Marquee
-      if (marqueeRef.current) {
-        gsap.to(".marquee-track", {
-          xPercent: -50, duration: 20, ease: "none", repeat: -1,
-          scrollTrigger: { trigger: marqueeRef.current, start: "top bottom", end: "bottom top", toggleActions: "play pause resume pause" }
-        });
-      }
-
-      // CTA scale-up
-      if (ctaRef.current) {
-        gsap.fromTo(".cta-content", { scale: 0.92, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.9, ease: "power3.out",
-            scrollTrigger: { trigger: ctaRef.current, start: "top 85%" } });
-      }
+  // ━━━ Section title reveals on scroll ━━━
+  useGSAP(() => {
+    const sections = gsap.utils.toArray<HTMLElement>(".section-title");
+    sections.forEach((el) => {
+      gsap.fromTo(el, { y: 60, opacity: 0 }, {
+        y: 0, opacity: 1, duration: 0.8, ease: "power3.out",
+        scrollTrigger: { trigger: el, start: "top 85%", toggleActions: "play none none none" }
+      });
     });
+  }, { scope: mainRef });
 
-    return () => ctx.revert();
-  }, []);
+  // ━━━ Bento cards — ScrollTrigger.batch ━━━
+  useGSAP(() => {
+    ScrollTrigger.batch(".bento-card", {
+      interval: 0.05,
+      batchMax: 6,
+      onEnter: (batch) => gsap.fromTo(batch, { y: 80, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1, duration: 0.7, stagger: 0.08, ease: "power3.out" }),
+      onLeaveBack: (batch) => gsap.to(batch, { opacity: 0.3, y: 20, duration: 0.3 }),
+      start: "top 85%",
+      once: true,
+    });
+  }, { scope: bentoRef });
+
+  // ━━━ Marquee — scrubbed scroll control ━━━
+  useGSAP(() => {
+    gsap.to(".marquee-track", {
+      xPercent: -50,
+      ease: "none",
+      duration: 15,
+      repeat: -1,
+      scrollTrigger: { trigger: marqueeRef.current, start: "top bottom", end: "bottom top", toggleActions: "play pause resume pause" },
+    });
+  }, { scope: marqueeRef });
+
+  // ━━━ Channel cards — staggered reveal ━━━
+  useGSAP(() => {
+    ScrollTrigger.batch(".channel-card", {
+      interval: 0.08,
+      onEnter: (batch) => gsap.fromTo(batch, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out" }),
+      start: "top 85%",
+      once: true,
+    });
+  }, { scope: channelsRef });
+
+  // ━━━ Food/live cards reveal ━━━
+  useGSAP(() => {
+    ScrollTrigger.batch(".preview-card", {
+      interval: 0.06,
+      onEnter: (batch) => gsap.fromTo(batch, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: "power2.out" }),
+      start: "top 88%",
+      once: true,
+    });
+  }, { scope: foodRef });
+
+  // ━━━ CTA scale-up ━━━
+  useGSAP(() => {
+    gsap.fromTo(".cta-content", { scale: 0.9, opacity: 0 }, {
+      scale: 1, opacity: 1, duration: 0.9, ease: "power4.out",
+      scrollTrigger: { trigger: ctaRef.current, start: "top 80%", toggleActions: "play none none none" },
+    });
+  }, { scope: ctaRef });
+
+  // ━━━ Accessibility — respect reduced-motion ━━━
+  const mm = gsap.matchMedia();
+  mm.add("(prefers-reduced-motion: reduce)", () => {
+    gsap.set("*", { clearProps: "all" });
+  });
 
   const channels = [
     { id: "luxury", label: t("channels.luxury.name"), desc: t("channels.luxury.description"), icon: Gem, href: "/channel/luxury/browse/boost", accent: "var(--accent)" },
@@ -66,23 +110,21 @@ export default function HomePage() {
   ];
 
   return (
-    <main className="overflow-x-hidden w-full max-w-full">
+    <main ref={mainRef} className="overflow-x-hidden w-full max-w-full">
       <Header />
 
-      {/* ──────── HERO: Artistic Asymmetry ──────── */}
+      {/* ━━━ HERO: Artistic Asymmetry ━━━ */}
       <section ref={heroRef} className="relative min-h-screen flex items-center px-6 sm:px-12 lg:px-24 overflow-hidden">
-        {/* Background gradient */}
         <div className="absolute inset-0" style={{
           background: "radial-gradient(ellipse 80% 60% at 30% 50%, rgba(255,90,110,0.06) 0%, transparent 70%), radial-gradient(ellipse 60% 50% at 80% 30%, rgba(232,195,0,0.04) 0%, transparent 70%)"
         }} />
-
         <div className="w-full max-w-7xl mx-auto relative z-10">
           <div className="max-w-5xl hero-text">
             <h1 className="h1-cinema text-[var(--t-high)]">
               {t("home.heroLine1")}<br />
               <span style={{ color: "var(--accent)" }}>{t("home.heroLine2")}</span>
             </h1>
-            <p className="mt-8 text-lg sm:text-xl" style={{ color: "var(--t-mid)", maxWidth: "32rem" }}>
+            <p className="mt-8 text-lg sm:text-xl hero-text" style={{ color: "var(--t-mid)", maxWidth: "32rem" }}>
               {t("home.subtitle")}
             </p>
             <div className="flex flex-wrap gap-4 mt-10 hero-text">
@@ -99,46 +141,31 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
-        {/* Floating product image — artistic asymmetry */}
         <div className="hero-img hidden xl:block absolute right-0 bottom-0 h-[85%] w-[40%]">
           <div className="relative h-full w-full">
-            <img
-              src={trending[0]?.images[0] || "https://picsum.photos/seed/luxury-hero/800/1200"}
-              alt=""
+            <img src={trending[0]?.images[0] || "https://picsum.photos/seed/luxury-hero/800/1200"} alt=""
               className="w-full h-full object-cover"
-              style={{
-                maskImage: "linear-gradient(to top, black 60%, transparent 100%)",
-                WebkitMaskImage: "linear-gradient(to top, black 60%, transparent 100%)",
-              }}
-            />
+              style={{ maskImage: "linear-gradient(to top, black 60%, transparent 100%)", WebkitMaskImage: "linear-gradient(to top, black 60%, transparent 100%)" }} />
           </div>
         </div>
       </section>
 
-      {/* ──────── INTEREST: Bento Grid ──────── */}
+      {/* ━━━ BENTO: Gapless Grid ━━━ */}
       <section ref={bentoRef} className="section-cinema px-6 sm:px-12 lg:px-24 grain-overlay">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-end justify-between mb-16">
-            <div>
-              <h2 className="h2-cinema text-[var(--t-high)]">{t("home.trendingTitle")}</h2>
-            </div>
-            <Link href={`/${locale}/channel/luxury/browse/boost`}
-              className="text-sm font-semibold transition-colors hover:opacity-80 hidden sm:block" style={{ color: "var(--accent)" }}>
+          <div className="flex items-end justify-between mb-16 section-title">
+            <div><h2 className="h2-cinema text-[var(--t-high)]">{t("home.trendingTitle")}</h2></div>
+            <Link href={`/${locale}/channel/luxury/browse/boost`} className="text-sm font-semibold transition-colors hover:opacity-80 hidden sm:block" style={{ color: "var(--accent)" }}>
               {t("home.viewAll")}
             </Link>
           </div>
-
-          {/* Bento — grid-flow-dense, no gaps */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 grid-flow-dense gap-4">
-            {/* Hero card — spans 2 cols, 2 rows */}
             {trending[0] && (
               <Link href={`/${locale}/channel/luxury/product/${trending[0].slug}`}
                 className="bento-card card-cinema lg:col-span-2 lg:row-span-2 group cursor-pointer relative">
                 <div className="absolute inset-0">
                   <img src={trending[0].images[0]} alt={trending[0].name}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    loading="lazy" />
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[var(--void)] via-[var(--void)]/30 to-transparent" />
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-8">
@@ -148,15 +175,11 @@ export default function HomePage() {
                 </div>
               </Link>
             )}
-
-            {/* Other cards — 1 col each */}
             {trending.slice(1, 5).map((p) => (
               <Link key={p.slug} href={`/${locale}/channel/luxury/product/${p.slug}`}
                 className="bento-card card-cinema group cursor-pointer">
                 <div className="aspect-[3/4] overflow-hidden">
-                  <img src={p.images[0]} alt={p.name}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                    loading="lazy" />
+                  <img src={p.images[0]} alt={p.name} className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
                 </div>
                 <div className="p-5">
                   <span className="text-[11px] uppercase tracking-wider" style={{ color: "var(--t-low)" }}>{p.brand}</span>
@@ -169,30 +192,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ──────── DESIRE: Infinite Marquee ──────── */}
+      {/* ━━━ MARQUEE: Infinite Brand Scroll ━━━ */}
       <section ref={marqueeRef} className="section-cinema overflow-hidden">
         <div className="marquee-track flex gap-8 whitespace-nowrap" style={{ width: "max-content" }}>
           {[...Array(2)].map((_, round) => (
             <div key={round} className="flex gap-16 items-center">
               {trending.map((p) => (
                 <span key={`${round}-${p.slug}`} className="text-6xl sm:text-8xl font-black tracking-tighter opacity-10 hover:opacity-30 transition-opacity duration-500 cursor-default select-none"
-                  style={{ color: "var(--accent)", fontFamily: "var(--font-display)" }}>
-                  {p.brand}
-                </span>
+                  style={{ color: "var(--accent)", fontFamily: "var(--font-display)" }}>{p.brand}</span>
               ))}
             </div>
           ))}
         </div>
       </section>
 
-      {/* ──────── DESIRE: Channel Accordions ──────── */}
-      <section className="section-cinema px-6 sm:px-12 lg:px-24 grain-overlay">
+      {/* ━━━ CHANNELS: Staggered Cards ━━━ */}
+      <section ref={channelsRef} className="section-cinema px-6 sm:px-12 lg:px-24 grain-overlay">
         <div className="max-w-7xl mx-auto">
-          <h2 className="h2-cinema text-[var(--t-high)] mb-16">{t("home.pickChannel")}</h2>
+          <h2 className="h2-cinema text-[var(--t-high)] mb-16 section-title">{t("home.pickChannel")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {channels.map((c) => (
               <Link key={c.id} href={`/${locale}${c.href}`}
-                className="card-cinema p-8 group cursor-pointer flex flex-col gap-5">
+                className="channel-card card-cinema p-8 group cursor-pointer flex flex-col gap-5">
                 <div className="size-14 rounded-2xl flex items-center justify-center transition-transform duration-500 ease-out group-hover:scale-110"
                   style={{ backgroundColor: `${c.accent}15` }}>
                   <c.icon className="size-6" style={{ color: c.accent }} />
@@ -201,8 +222,7 @@ export default function HomePage() {
                   <h3 className="text-xl font-bold text-[var(--t-high)] mb-2">{c.label}</h3>
                   <p style={{ color: "var(--t-mid)", lineHeight: "1.6" }}>{c.desc}</p>
                 </div>
-                <div className="flex items-center gap-2 text-sm font-semibold transition-all duration-300 group-hover:gap-3"
-                  style={{ color: c.accent }}>
+                <div className="flex items-center gap-2 text-sm font-semibold transition-all duration-300 group-hover:gap-3" style={{ color: c.accent }}>
                   {t("home.viewAll").replace(" →", "")} <ArrowRight className="size-4" />
                 </div>
               </Link>
@@ -211,10 +231,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ──────── FOOD + LIVE Dual Grid ──────── */}
-      <section className="section-cinema px-6 sm:px-12 lg:px-24">
+      {/* ━━━ FOOD + LIVE: Preview Cards ━━━ */}
+      <section ref={foodRef} className="section-cinema px-6 sm:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Food */}
           <div className="card-cinema p-8">
             <div className="flex items-center gap-3 mb-8">
               <UtensilsCrossed className="size-6" style={{ color: "var(--cool)" }} />
@@ -223,7 +242,7 @@ export default function HomePage() {
             <div className="space-y-4">
               {hotFood.map((f) => (
                 <Link key={f.slug} href={`/${locale}/channel/food`}
-                  className="flex items-center gap-4 p-4 rounded-xl hover:bg-white/[0.03] transition-colors group cursor-pointer">
+                  className="preview-card flex items-center gap-4 p-4 rounded-xl hover:bg-white/[0.03] transition-colors group cursor-pointer">
                   <div className="size-14 rounded-lg overflow-hidden shrink-0">
                     <img src={f.image} alt={f.name} className="size-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
@@ -236,8 +255,6 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-
-          {/* Live */}
           <div className="card-cinema p-8">
             <div className="flex items-center gap-3 mb-8">
               <Radio className="size-6" style={{ color: "var(--warm)" }} />
@@ -247,7 +264,7 @@ export default function HomePage() {
             <div className="space-y-4">
               {hotLive.map((live) => (
                 <Link key={live.slug} href={`/${locale}/channel/live`}
-                  className="flex items-center gap-4 p-4 rounded-xl hover:bg-white/[0.03] transition-colors group cursor-pointer">
+                  className="preview-card flex items-center gap-4 p-4 rounded-xl hover:bg-white/[0.03] transition-colors group cursor-pointer">
                   <div className="size-14 rounded-lg overflow-hidden shrink-0">
                     <img src={live.image} alt={live.title} className="size-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
@@ -263,13 +280,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ──────── ACTION: CTA ──────── */}
+      {/* ━━━ CTA: Scale-up reveal ━━━ */}
       <section ref={ctaRef} className="section-cinema px-6 sm:px-12 lg:px-24 text-center">
         <div className="max-w-3xl mx-auto cta-content">
           <h2 className="h2-cinema text-[var(--t-high)] mb-8">Ready to feel something?</h2>
-          <p className="text-lg mb-12" style={{ color: "var(--t-mid)" }}>
-            Browse. Pretend. Get dopamine. No credit card required.
-          </p>
+          <p className="text-lg mb-12" style={{ color: "var(--t-mid)" }}>Browse. Pretend. Get dopamine. No credit card required.</p>
           <Link href={`/${locale}/sim-order`}
             className="inline-flex items-center gap-3 px-12 py-5 rounded-full text-lg font-bold transition-all duration-300 hover:scale-105"
             style={{ background: "var(--accent)", color: "#fff" }}>

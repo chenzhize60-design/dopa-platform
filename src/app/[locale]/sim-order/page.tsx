@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
 import { Sparkles, CheckCircle2, Share2, ArrowRight, Zap } from "lucide-react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { Header } from "@/components/layout/Header";
 import { BrandButton } from "@/components/brand/BrandButton";
@@ -23,16 +24,14 @@ export default function SimOrderPage() {
   const selectedItems = simProducts.filter((p) => selected.includes(p.slug));
   const total = selectedItems.reduce((sum, p) => sum + parseInt(p.price.replace(/[^0-9]/g, "")), 0).toLocaleString();
 
-  useEffect(() => {
-    if (step === 2 && burstRef.current) {
-      const ctx = gsap.context(() => {
-        gsap.fromTo(".burst-item", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, stagger: 0.1, ease: "back.out(1.7)" });
-        gsap.fromTo(".burst-text", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, delay: 0.4, ease: "power3.out" });
-        gsap.fromTo(".burst-particles", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 0.3, duration: 1.5, delay: 0.2, ease: "power3.out" });
-      }, burstRef);
-      return () => ctx.revert();
+  // GSAP burst animation when step changes to 2
+  useGSAP(() => {
+    if (step === 2) {
+      gsap.fromTo(".burst-item", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.6, stagger: 0.1, ease: "back.out(1.7)" });
+      gsap.fromTo(".burst-text", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, delay: 0.4, ease: "power3.out" });
+      gsap.fromTo(".burst-particles", { scale: 0.5, opacity: 0 }, { scale: 1, opacity: 0.3, duration: 1.5, delay: 0.2, ease: "power3.out" });
     }
-  }, [step]);
+  }, { scope: burstRef, dependencies: [step] });
 
   return (
     <main className="overflow-x-hidden w-full max-w-full min-h-screen">
