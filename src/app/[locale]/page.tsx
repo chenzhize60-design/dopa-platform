@@ -283,8 +283,8 @@ export default function HomePage() {
       {/* ━━━ CTA: Scale-up reveal ━━━ */}
       <section ref={ctaRef} className="section-cinema px-6 sm:px-12 lg:px-24 text-center">
         <div className="max-w-3xl mx-auto cta-content">
-          <h2 className="h2-cinema text-[var(--t-high)] mb-8">Ready to feel something?</h2>
-          <p className="text-lg mb-12" style={{ color: "var(--t-mid)" }}>Browse. Pretend. Get dopamine. No credit card required.</p>
+          <h2 className="h2-cinema text-[var(--t-high)] mb-8">准备好了吗？</h2>
+          <p className="text-lg mb-12" style={{ color: "var(--t-mid)" }}>浏览、假装、多巴胺。不需要信用卡。</p>
           <Link href={`/${locale}/sim-order`}
             className="inline-flex items-center gap-3 px-12 py-5 rounded-full text-lg font-bold transition-all duration-300 hover:scale-105"
             style={{ background: "var(--accent)", color: "#fff" }}>

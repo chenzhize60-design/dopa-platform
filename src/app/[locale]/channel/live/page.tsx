@@ -31,7 +31,7 @@ export default function LiveChannelPage() {
 
       <section className="px-6 sm:px-12 lg:px-24 pb-12">
         <div className="max-w-7xl mx-auto">
-          <h2 className="h2-cinema text-[var(--t-high)] mb-10">Live Now</h2>
+          <h2 className="h2-cinema text-[var(--t-high)] mb-10">正在直播</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {hot.map((live) => (
               <Link key={live.slug} href={`/${locale}/channel/live`} className="card-cinema group cursor-pointer">
@@ -50,9 +50,9 @@ export default function LiveChannelPage() {
                       <span className="text-base font-bold" style={{ color: "var(--accent)" }}>{live.price}</span>
                       {live.originalPrice && <span className="text-xs line-through ml-2" style={{ color: "var(--t-low)" }}>{live.originalPrice}</span>}
                     </div>
-                    <span className="text-xs" style={{ color: "var(--t-low)" }}>{live.sales.toLocaleString()} sold</span>
+                    <span className="text-xs" style={{ color: "var(--t-low)" }}>已售{live.sales.toLocaleString()}</span>
                   </div>
-                  {live.stock > 0 && live.stock <= 10 && <p className="text-[10px] font-medium mt-2" style={{ color: "var(--accent)" }}>Only {live.stock} left</p>}
+                  {live.stock > 0 && live.stock <= 10 && <p className="text-[10px] font-medium mt-2" style={{ color: "var(--accent)" }}>仅剩{live.stock}件</p>}
                 </div>
               </Link>
             ))}
@@ -62,7 +62,7 @@ export default function LiveChannelPage() {
 
       <section className="px-6 sm:px-12 lg:px-24 pb-24">
         <div className="max-w-7xl mx-auto">
-          <h2 className="h2-cinema text-[var(--t-high)] mb-10">All Streams</h2>
+          <h2 className="h2-cinema text-[var(--t-high)] mb-10">全部直播间</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {all.map((live) => (
               <Link key={live.slug} href={`/${locale}/channel/live`} className="card-cinema group cursor-pointer">
